@@ -1,10 +1,10 @@
 var prompt = require("prompt")
-var LoadPackage = require("../app/utils/package_loader")
+var LoadPackage = require("3vot-cloud/utils/package_loader")
 var Setup = require("../app/actions/profile_setup")
-var Create = require("../app/actions/profile_create")
+var Create = require("3vot-cloud/app/create")
 var Path= require("path")
-var Stats = require("../app/utils/stats")
-var Log = require("../app/utils/log")
+var Stats = require("3vot-cloud/utils/stats")
+var Log = require("3vot-cloud/utils/log")
 
 function setup(callback){
   var options = [ 

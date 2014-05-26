@@ -1,14 +1,14 @@
 var prompt = require("prompt")
-var LoadPackage = require("../app/utils/package_loader")
+var LoadPackage = require("3vot-cloud/utils/package_loader")
 
-var Download = require("../app/actions/app_download")
-var Upload = require("../app/actions/app_upload")
-var Build = require("../app/actions/app_build")
-var Publish = require("../app/actions/app_publish")
-var Install = require("../app/actions/app_install")
-var Log = require("../app/utils/log")
+var Download = require("3vot-cloud/app/download")
+var Upload = require("3vot-cloud/app/upload")
+var Build = require("3vot-cloud/app/build")
+var Publish = require("3vot-cloud/app/publish")
+var Install = require("3vot-cloud/app/install")
+var Log = require("3vot-cloud/utils/log")
 
-var Stats = require("../app/utils/stats")
+var Stats = require("3vot-cloud/utils/stats")
 
 function promptOrResult( app_name, callback, prompts ){
  if(!prompts) prompts = []

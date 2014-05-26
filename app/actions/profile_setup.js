@@ -2,15 +2,14 @@ var Path = require("path")
 var fs = require("fs")
 var Q = require("q");
 
-var Profile = require("../models/profile")
+var Profile = require("3vot-cloud/models/profile")
 
-var AwsCredentials = require("../aws/credentials");
+var AwsCredentials = require("3vot-cloud/aws/credentials");
 
-var Log = require("../utils/log")
+var Log = require("3vot-cloud/utils/log")
 
-var Packs = require("../utils/packs")
-var Install = require("../utils/install")
-
+var Packs = require("3vot-cloud/utils/packs")
+var Install = require("3vot-cloud/utils/install")
 
 var profile = {};
 

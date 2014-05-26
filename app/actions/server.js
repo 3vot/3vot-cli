@@ -12,12 +12,12 @@ var request = require("superagent")
 var devDomain = null;
 
 var Server = {}
-var Builder = require("../utils/builder");
-var Transform = require("../utils/transform")
-var WalkDir = require("../utils/walk")
-var AppBuild = require("./app_build")
+var Builder = require("3vot-cloud/utils/builder");
+var Transform = require("3vot-cloud/utils/transform")
+var WalkDir = require("3vot-cloud/utils/walk")
+var AppBuild = require("3vot-cloud/app/build")
 
-var Log = require("../utils/log")
+var Log = require("3vot-cloud/utils/log")
 
 module.exports = Server;
 
