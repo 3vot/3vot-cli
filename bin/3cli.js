@@ -49,7 +49,7 @@ else if( argv.h ){
   var pkg = require("../package.json")
   var help = [
     "",
-    "Usage: clay [options] [command]",
+    "Usage: 3vot [options] [command]",
     "",
     "Commands:",
     "",
