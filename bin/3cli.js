@@ -1,33 +1,21 @@
 #!/usr/bin/env node
-
 require("coffee-script/register")
-var argv = require('optimist').argv;
+
+var argv = require('optimist').argv
 var Path = require('path')
 var prompt = require("prompt")
-var fs = require("fs");
-var Q = require("q");
-var colors = require('colors');
-
-var ProfileQ = require("../prompts/profile")
-
-var Server = require("../app/actions/server")
-
-var Store = require("../prompts/store")
-
-var Salesforce = require("../prompts/salesforce")
-
-var Db = require("../prompts/db")
-
-var App = require("../prompts/app")
-
-var Upgrade = require("../prompts/upgrade")
-
+var fs = require("fs")
+var Q = require("q")
+var colors = require('colors')
 var _3Model = require("3vot-model")
 
+var Profile = require("./profile")
+var App = require("./app")
+var Server = require("../app/actions/server")
 var Log = require("../app/utils/log")
 var Stat = require("../app/utils/stats")
 
-Log.setLevel("INFO");
+Log.setLevel("INFO")
 
 //_3Model.Model.host = "http://localhost:3002/v1"
 
@@ -43,87 +31,79 @@ var callback = function(){
   Log.info("---- 3VOT ----")
 }
 
-if(argv.l){
-  Log.setLevel("DEBUG2");
+if(argv.d){
+  Log.setLevel("DEBUG2")
 }
 
-if(argv.d){
+if(argv.l){
   _3Model.Model.host = "http://localhost:3002/v1"
 }
 
 if(argv.v){
-  var pathToPackage =  Path.join(Path.dirname(fs.realpathSync(__filename)), '../package.json');
-  var pck  = require(pathToPackage);
-  console.log(pck.version);
+  var pathToPackage =  Path.join(Path.dirname(fs.realpathSync(__filename)), '../package.json')
+
+  var pck  = require(pathToPackage)
+  console.log(pck.version)
 }
 else if( argv.h ){
   var pkg = require("../package.json")
-  console.log("" + pkg.name + " " + pkg.version + "\n\nUsage: " + pkg.name + " [options] [command]\n\nCommands:\n\n  server         Start the development server. Use -n to run in Nitrous\n  profile        Profile actions to setup enviroment  \n  app            Manage Application Livecycle\n  store          Manage de Appearance of the 3VOT Profile\n  salesforce     Setup and Deploy Apps to Salesforce.com\n\nOptions:\n\n  -l,    run in debug mode, showing all console output\n  -h,    output usage information\n  -v,    output the version number\n  -u,    Updates your 3VOT Profile\n\nProfile Actions:\n  3vot profile:create        Registers a new profile in the 3VOT Platform and creates the project structure\n  \n  3vot profile:setup         Creates the project folder and installs all dependencies.\n                              ( Windows Note: it's posible that users will need to run npm install manually )\n\n  3vot profile:publish       Publishes an App to the 3VOT Profile Main Page\n\n  3vot profile:update        Updates the Profile Page to Latest Version ( only required before v: 0.3.31 )\n\nSalesforce Actions:\n  3vot salesforce:setup      Connects to Salesforce and saves the username and security key\n  \n  3vot salesforce:dev        Creates and Uploads a Visualforce page used for local development\n  \n  3vot salesforce:upload     Uploads an app to 3VOT Digital Content Cloud, creates a Visualforce Page and links both\n\n\nApp Actions\n  3vot app:template          Downloads an Application based on a Template\n\n  3vot app:create            Registers a new App on the Platform using current credits and creates folder structure\n\n  3vot app:static            Registers a new Static App on the Platform using current credits and creates folder structure\n\n  3vot app:upload            Uploads the Code of the new app and uploads the app as a demo\n  \n  3vot app:clone             Clones an App from the 3VOT Platform Marketplace and downloads its source code\n  \n  3vot app:publish           Publishes a Demo App to your 3VOT Profile\n  \n  3vot app:build             Builds the development version of the App ( Used in manual operation )\n  \n  3vot app:install           Installs the NPM and Bower Dependencies of the App ( Used in Manual Operation )\n  \nStore Actions\n  3vot store:create          Creates a new Store in on your 3VOT Profile Page\n\n  3vot store:list            List all Stores and Apps in your 3VOT Profile\n  \n  3vot store:app:add         Adds an App to the specified store referenced by store name\n  \n  3vot store:app:remove      Removes an App from the Store\n\n  3vot store:destroy         Removes a Store from your 3VOT Profile\n  \n  3vot store:generate        Updates your 3VOT Profile APP JSON Data Store with all Apps in Stores ( this occurs automatically )\n");
+  var help = [
+    "",
+    "Usage: clay [options] [command]",
+    "",
+    "Commands:",
+    "",
+    "  register               Registers to user 3VOT CLI",
+    "",
+    "  setup                  Builds the project folder and installs all dependencies",
+    "",
+    "  create                 Creates a new javascript app",
+    "",
+    "  sample                 Downloads a starting point App",
+    "",
+    "  server                 Starts a development server",
+    "",
+    "  upload                 Uploads and publishes the app to the web",
+    "",
+    "  build                  Builds the development version of the app (used in manual operations)",
+    "",
+    "  install                Installs the NPM and Bower dependencies of the app (used in manual operations)",
+    "",
+    
+    "Utilities:",
+    "",
+    "--app appname            Used as an alternative to typing App Name in a prompt.",
+    "",
+    " -d                      Runs the specified command in debug mode, showing all console outputs",
+    "",
+    "Options:",
+
+    "  -h                     help information",
+    "  -v                     output the version number"
+
+  ].join("\n")
+  console.log( help );
 }
 else{
-  if(argv.u){ callback = Store.generate }
+
   
-  if( argv._.indexOf("profile:setup") > -1 ){ ProfileQ.setup(); } 
+  if( argv._.indexOf("setup") > -1 ){ Profile.setup(); } 
 
-  else if( argv._.indexOf("profile:create") > -1 ){ ProfileQ.create( Store.generate ); }
+  else if( argv._.indexOf("register") > -1 ){ Profile.create(); }
 
-  else if( argv._.indexOf("profile:update") > -1 ){ ProfileQ.update( Store.generate ); }
+  else if( argv._.indexOf("create") > -1 ){ App.template( argv.app ); }
 
-  else if( argv._.indexOf("profile:publish") > -1 ){ App.publishAsMain( Store.generate ); }
+  else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app ); }
 
-  else if( argv._.indexOf("app:template") > -1 ){ App.template(); }
-  
-  else if( argv._.indexOf("app:create") > -1 ){ App.create(); }
+  else if( argv._.indexOf("download") > -1 ){ App.download( ); }
 
-  else if( argv._.indexOf("app:update") > -1 ){ App.update( Store.generate ); }
+  else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app ); }
 
-  else if( argv._.indexOf("app:upload") > -1 ){ App.upload(callback); }
+  else if( argv._.indexOf("build") > -1 ){ App.build( argv.app ); }
 
-  else if( argv._.indexOf("app:static") > -1 ){ App.static(callback); }
+  else if( argv._.indexOf("install") > -1 ){ App.install( argv.app ); }
 
-  else if( argv._.indexOf("app:clone") > -1 ){ App.download(); }
-
-  else if( argv._.indexOf("app:publish") > -1 ){ App.publish(callback); }
-
-  else if( argv._.indexOf("app:build") > -1 ){ App.build(); }
-
-  else if( argv._.indexOf("app:install") > -1 ){ App.install(); }
-
-  else if( argv._.indexOf("store:create") > -1 ){ Store.create( Store.generate ); }
-
-  else if( argv._.indexOf("store:destroy") > -1 ){ Store.destroy( Store.generate ); }
-
-  else if( argv._.indexOf("store:app:add") > -1 ){ Store.addApp( Store.generate ); }
-
-  else if( argv._.indexOf("store:app:remove") > -1 ){ Store.removeApp( Store.generate ); }
-
-  else if( argv._.indexOf("store:destroy") > -1 ){ Store.destroy( Store.generate ); }
-
-  else if( argv._.indexOf("store:publish") > -1 ){ Store.generate(); }
-
-  else if( argv._.indexOf("store:list") > -1 ){ Store.list(); }
-
-  else if( argv._.indexOf("db:create") > -1 ){ Db.create(); }
-
-  else if( argv._.indexOf("db:develop") > -1 ){ Db.develop(); }
-
-  else if( argv._.indexOf("db:build") > -1 ){ Db.build(); }
-
-  else if( argv._.indexOf("db:deploy") > -1 ){ Db.deploy(); }
-
-  else if( argv._.indexOf("server") > -1 ){ Server.prompt( argv.n ); }
-
-  else if( argv._.indexOf("salesforce:setup") > -1 ){ Salesforce.setup(); }
-
-  else if( argv._.indexOf("salesforce:upload") > -1 ){ Salesforce.upload(); }
-
-  else if( argv._.indexOf("salesforce:install") > -1 ){ Salesforce.install(); }
-
-  else if( argv._.indexOf("salesforce:dev") > -1 ){ Salesforce.dev(); }
-
-  else if( argv._.indexOf("salesforce:profile") > -1 ){ Salesforce.profile(); }
-
-  else if( argv._.indexOf("upgrade") > -1 ){ Upgrade.upgrade(); }
+  else if( argv._.indexOf("server") > -1 ){ Server.prompt( ); }
 
   else{
     

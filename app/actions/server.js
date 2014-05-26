@@ -24,31 +24,22 @@ module.exports = Server;
 Server.prompt =  function( isNitrous ){
   prompt.start();
   
-  prompts = [ { name: 'ssl', description: 'SSL: (y/n) Run server in HTTPS with SSL? ' }  ]
-  if( isNitrous ) prompts.push({ name: 'domain', description: 'Domain: The domain where you will run the app' } )
+  //prompts = [ { name: 'ssl', description: 'SSL: (y/n) Run server in HTTPS with SSL? ' }  ]
+  //if( isNitrous ) prompts.push({ name: 'domain', description: 'Domain: The domain where you will run the app' } )
   
-  prompt.get( prompts,
-   function (err, result) {
-     result.domain = result.domain || "localhost:3000"
-     result.domain = result.domain.replace("https://", "")
-     result.domain = result.domain.replace("http://", "")
-     if( result.domain.slice(-1) == "/") result.domain = result.domain.slice(0, - 1);
-     Server.domain = result.domain;
-     Server.ssl = result.ssl || false
+  //prompt.get( prompts,
+   //function (err, result) {
+     //result.domain = result.domain || "localhost:3000"
+     //result.domain = result.domain.replace("https://", "")
+     //result.domain = result.domain.replace("http://", "")
+     //if( result.domain.slice(-1) == "/") result.domain = result.domain.slice(0, - 1);
+     Server.domain = "localhost:3000"
+     //Server.ssl = false
      Server.startServer()
-   });
+   //});
 },
 
 Server.startServer = function(){
-
-  var sslOptions = {
-    key: fs.readFileSync( Path.join(Path.dirname(fs.realpathSync(__filename)), "..","..", 'ssl' , "server.key" )),
-    cert: fs.readFileSync( Path.join(Path.dirname(fs.realpathSync(__filename)),"..","..", 'ssl' , "server.crt" )),
-    ca: fs.readFileSync( Path.join(Path.dirname(fs.realpathSync(__filename)), "..","..",'ssl' , "ca.crt" )),
-    requestCert: true,
-    rejectUnauthorized: false
-  };
-  
   var app = express();    
   var pck = require( Path.join( process.cwd(), "3vot.json" )  );
   var profile = pck.user_name;
@@ -61,7 +52,7 @@ Server.startServer = function(){
   app.use(app.router);
 
   app.get("/", function(req,res){
-    res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ /YOURORG/YOURAPP</h2>");
+    res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ /"+profile+"/APP_NAME</h2>");
   });
 
   app.get("/" + profile  + "/:app_name/assets/:folder/:asset", function(req, res) {
@@ -137,15 +128,6 @@ Server.startServer = function(){
     
   });
 
-  // Route for Main App, did this to simplify tranforms. Could also request via domain, but hack is worst
-  app.get("/" + profile  + "/stores.json", function(req, res) {
-    request.get("http://3vot.com/" + profile  + "/stores.json").end( function(err, httpResponse){
-      if(err) return res.send(500, err)
-      if(res.status >= 400) return res.send(500, res.text )
-      res.send( httpResponse.body )
-    })
-  });
-
   app.get("/" + profile  + "/:app_name", function(req, res) {
     var app_package;
     var app_name = req.params.app_name
@@ -166,17 +148,9 @@ Server.startServer = function(){
 
   });
 
-  if(Server.ssl){
-    https.createServer(sslOptions, app).listen(app.get('port'), function(){
-      console.info('3VOT Server running at:  https://' + Server.domain );
-    }); 
-  }
-  
-  else{
-    http.createServer(app).listen(app.get('port'), function(){
-      console.info('3VOT Server running at: http://' + Server.domain );
-    });
-  } 
+  http.createServer(app).listen(app.get('port'), function(){
+    console.info('3VOT Server running at: http://' + Server.domain );
+  });
   
 }
 

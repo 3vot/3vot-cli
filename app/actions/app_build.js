@@ -95,8 +95,7 @@ function transformAssets(app_name){
     var filePath = Path.join( process.cwd(), "apps", app_name, "app", "assets", path.name );
     var dirPath = filePath.substr(0, filePath.lastIndexOf("/") );
     mkpath.sync( dirPath );
-    fs.writeFileSync( filePath  , file );
-    
+    fs.writeFileSync( filePath, file );    
   });
 }
 

@@ -56,7 +56,6 @@ function execute(options){
     .then( buildPackage )
     .then( uploadSourceCode )
     .then( uploadAppFiles )
- //   .then( uploadAssetsFiles )
     .then( uploadDependenciesFiles )
     .then( createApp )
     .then( function(){ 
