@@ -156,12 +156,12 @@ function adjustPackage(){
   if(promptOptions.user_name == vot.user_name){
     pck.version = "0.0." + tempVars.app.version;
     pck.threevot.version = "" + tempVars.app.version;
-    pck.user_name = vot.user_name;
+    pck.threevot.user_name = vot.user_name;
   }
   else{
     pck.version = "0.0.1";
     pck.threevot.version = "1";
-    pck.user_name = vot.user_name;
+    pck.threevot.user_name = vot.user_name;
   }
 
   fs.writeFile( Path.join( process.cwd(), "apps", promptOptions.app_new_name, "package.json" ), JSON.stringify(pck,null,'\t') , function(err){

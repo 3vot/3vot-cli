@@ -32,7 +32,6 @@ function create(callback){
       Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
       Create(result)
       .then( Setup )
-      .then( Update )
       .then( function(promptOptions){
         //var path = Path.join( process.cwd(), "3vot_" + promptOptions.user_name ) 
         //Log.debug("Changing to path " + path , "prompts/profile", 39)
