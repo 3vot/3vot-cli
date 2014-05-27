@@ -12,7 +12,6 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "3vot": "0.0.6",
     "colors": "~0.6.2",
     "optimist": "~0.6.0",
     "q": "~1.0.0",
@@ -23,7 +22,6 @@
     "fstream": "~0.1.25",
     "tar": "~0.1.19",
     "zlib": "~1.0.5",
-    "parse": "~1.2.13",
     "mime": "~1.2.11",
     "less": "~1.6.1",
     "express": "~3.4.8",
