@@ -59,7 +59,7 @@ else if( argv.h ){
     "",
     "  create                 Creates a new javascript app",
     "",
-    "  sample                 Downloads a starting point App",
+    "  download               Downloads a starting point App",
     "",
     "  server                 Starts a development server",
     "",
@@ -95,7 +95,7 @@ else{
 
   else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app ); }
 
-  else if( argv._.indexOf("download") > -1 ){ App.download( ); }
+  else if( argv._.indexOf("download") > -1 ){ App.download( argv.app ); }
 
   else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app ); }
 

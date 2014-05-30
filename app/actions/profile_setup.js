@@ -69,7 +69,7 @@ function scaffold(){
     fs.mkdirSync( Path.join( process.cwd(), options.folder , "tmp" )) ;
 
     var templatesPath =  Path.join(Path.dirname(fs.realpathSync(__filename)), '../../templates');
-    var _3votJSON = require( Path.join(  templatesPath, "_3vot.json" ));
+    var _3votJSON = {};
     var gitIgnore = fs.readFileSync(  Path.join( templatesPath, "_.gitignore" ), "utf-8");
     var pckJSON = require( Path.join( templatesPath, "package.json" ));
 
