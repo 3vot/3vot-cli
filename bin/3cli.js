@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-require("coffee-script/register")
 
 var argv = require('optimist').argv
 var Path = require('path')
