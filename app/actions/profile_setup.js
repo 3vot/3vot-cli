@@ -68,7 +68,7 @@ function scaffold(){
     fs.mkdirSync( Path.join( process.cwd(), options.folder , "apps", "dependencies" ));
     fs.mkdirSync( Path.join( process.cwd(), options.folder , "tmp" )) ;
 
-    var templatesPath =  Path.join(Path.dirname(fs.realpathSync(__filename)), '../../templates');
+    var templatesPath =  Path.join(Path.dirname(fs.realpathSync(__filename)), '../../node_modules/3vot-cloud/templates');
     var _3votJSON = {};
     var gitIgnore = fs.readFileSync(  Path.join( templatesPath, "_.gitignore" ), "utf-8");
     var pckJSON = require( Path.join( templatesPath, "package.json" ));
