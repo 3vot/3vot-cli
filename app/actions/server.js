@@ -35,7 +35,7 @@ Server.prompt =  function( isNitrous ){
      //Server.ssl = false
      Server.startServer()
    //});
-},
+};
 
 Server.startServer = function(){
   var app = express();    
@@ -136,20 +136,34 @@ Server.startServer = function(){
       return res.send("App " + app_name + " Not found in " + profile)
     }
 
-    AppBuild( app_name, "localhost", false, Server.domain )
-    .then( function(){
-      Server.lastBuild = Date.now();
-      var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html");
-      res.sendfile(filePath)
-    })
-    .fail( function(err){ Log.error(err, "actions/server", 164); res.send( err.toString(), 500 ) });
+    try{
 
+      var exec = require('child_process').exec,child;
+      
+
+      child = exec('node ' + Path.join(  process.cwd() , "apps", app_name, "hooks" ,"pre.js"),
+      function (error, stdout, stderr) {
+        Log.debug(stdout, "server:146");
+        if (error !== null) return console.log('exec error: ' + error);
+        build();
+      });
+
+    }catch(err){ build(); }
+
+    function build(){
+      AppBuild( app_name, "localhost", false, Server.domain )
+      .then( function(){
+        Server.lastBuild = Date.now();
+        var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html");
+        res.sendfile(filePath)
+      })
+      .fail( function(err){ Log.error(err, "actions/server", 164); res.send( err.toString(), 500 ) });
+    };
+  
   });
 
   http.createServer(app).listen(app.get('port'), function(){
     console.info('3VOT Server running at: http://' + Server.domain );
   });
-  
+
 }
-
-

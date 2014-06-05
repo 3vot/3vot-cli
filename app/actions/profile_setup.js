@@ -96,46 +96,4 @@ function changeDir( options ){
 }
 
 
-
-function installNPM2(options){
-  var deferred = Q.defer();
-  var projectPath = Path.join( process.cwd() , options.folder );
-  process.chdir( projectPath );
-
-  try{
-   var npm = require("npm");
-   var projectPackage = require( Path.join(process.cwd(), "package.json") )
-
-   var packs = []
-   for(index in projectPackage.dependencies){
-     packs.push(index+"@"+projectPackage.dependencies[index])
-   }
-
-    npm.load(npm.config, function (er) {
-      if (er) return deferred.reject(er);
-      npm.commands.install( projectPackage.dependencies , function (er, data) {
-        if (er) return deferred.reject(er)
-        restoreCWD()
-        return deferred.resolve()
-        // command succeeded, and data might have some info
-      });
-      npm.on("log", function (message) { })
-    });
-  }
-  catch(e){
-    Log.info("*** WARNING: ***")
-    Log.info("PLEASE INSTALL NPM MANUALLY by running npm install");
-    Log.debug2(e)
-    restoreCWD()
-    return deferred.resolve()
-  }
-
-  return deferred.promise;      
-}
-
-function restoreCWD(){
-  var projectPath = Path.join( process.cwd() , ".." );
-  process.chdir( projectPath );
-}
-
 module.exports = execute;
