@@ -36,8 +36,8 @@
     "mkpath": "~0.1.0",
     "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.14"
-  },
+    "3vot-cloud": "0.0.15"
+},
   "testDependencies": {
     "mocha": "~1.17.0",
     "should": "~3.0.1",
