@@ -137,18 +137,23 @@ Server.startServer = function(){
     }
 
     try{
-      var exec = require('child_process').exec,child;
+      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"pre.js" );
 
-      child = exec('node ' + Path.join(  process.cwd() , "apps", app_name, "hooks" ,"pre.js"),
-      function (error, stdout, stderr) {
+      if( fs.existsSync(prePath) ){
 
-        if (error !== null){
-          Log.debug(error, "server:146");
-        }
-        Log.debug(stdout, "server:146");
-        build();
-      });
+        var exec = require('child_process').exec,child;
 
+        child = exec('node ' + prePath,
+        function (error, stdout, stderr) {
+
+          if (error !== null){
+            Log.debug(error, "server:146");
+          }
+          Log.debug(stdout, "server:146");
+          build();
+        });
+      }
+      else build();
     }catch(err){ build(); }
 
     function build(){

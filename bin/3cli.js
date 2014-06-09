@@ -16,11 +16,8 @@ var Stat = require("3vot-cloud/utils/stats")
 
 Log.setLevel("INFO")
 
-//_3Model.Model.host = "http://localhost:3002/v1"
-
 _3Model.Model.host = "http://threevot-api.herokuapp.com/v1"
 
-Log.debug("LOAD PACKAGE CAN INCLUDE OPTIONS TO LOAD 3VOT or APP PACKAGE AUTOMATICALLY AND DONT DO IT IN ACTIONS", "bin/cli", 36)
 console.log("-- 3VOT DIGITAL CONTENT CLOUD --")
 
 // *****************
