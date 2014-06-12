@@ -1,6 +1,6 @@
 {
   "name": "3vot-cli",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "description": "3VOT Command Line Interface to run development task from the command line.",
   "main": "bin/3cli.js",
   "bin": {
@@ -21,7 +21,6 @@
     "semver": "~2.2.1",
     "fstream": "~0.1.25",
     "tar": "~0.1.19",
-    "zlib": "~1.0.5",
     "mime": "~1.2.11",
     "express": "~3.4.8",
     "prompt": "~0.2.12",
@@ -36,7 +35,7 @@
     "mkpath": "~0.1.0",
     "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.17"
+    "3vot-cloud": "0.0.18"
   },
   "testDependencies": {
     "mocha": "~1.17.0",

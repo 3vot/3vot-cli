@@ -13,6 +13,10 @@ var App = require("./app")
 var Server = require("../app/actions/server")
 var Log = require("3vot-cloud/utils/log")
 var Stat = require("3vot-cloud/utils/stats")
+var _3vot = require("3vot")
+
+_3vot.host = "3vot.com"
+
 
 Log.setLevel("INFO")
 
