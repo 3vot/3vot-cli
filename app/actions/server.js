@@ -1,3 +1,5 @@
+var Q = require("q");
+
 var express = require('express');
 var fs = require("fs");
 var Path = require("path");
@@ -11,7 +13,6 @@ var devDomain = null;
 
 var Server = {}
 var Builder = require("3vot-cloud/utils/builder");
-var Transform = require("3vot-cloud/utils/transform")
 var WalkDir = require("3vot-cloud/utils/walk")
 var AppBuild = require("3vot-cloud/app/build")
 
@@ -21,20 +22,8 @@ module.exports = Server;
 
 Server.prompt =  function( isNitrous ){
   prompt.start();
-  
-  //prompts = [ { name: 'ssl', description: 'SSL: (y/n) Run server in HTTPS with SSL? ' }  ]
-  //if( isNitrous ) prompts.push({ name: 'domain', description: 'Domain: The domain where you will run the app' } )
-  
-  //prompt.get( prompts,
-   //function (err, result) {
-     //result.domain = result.domain || "localhost:3000"
-     //result.domain = result.domain.replace("https://", "")
-     //result.domain = result.domain.replace("http://", "")
-     //if( result.domain.slice(-1) == "/") result.domain = result.domain.slice(0, - 1);
-     Server.domain = "localhost:3000"
-     //Server.ssl = false
-     Server.startServer()
-   //});
+  Server.domain = "localhost:3000"
+  Server.startServer()
 };
 
 Server.startServer = function(){
@@ -50,91 +39,84 @@ Server.startServer = function(){
   app.use(app.router);
 
   app.get("/", function(req,res){
-    res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ /"+profile+"/APP_NAME</h2>");
+    res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ <a href='http://localhost:3000/APP_NAME'>http://localhost:3000/APP_NAME</a></h2>");
   });
 
-  app.get("/" + profile  + "/:app_name/assets/:folder/:asset", function(req, res) {
+  app.get("/:app_name/:file", function(req, res) {
     var asset = req.params.asset;
     var app_name = req.params.app_name;
-    var folder_name = req.params.folder;
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", folder_name, asset );
+    var file = req.params.file;
+    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", file );
     res.sendfile(filePath);
   });
 
-  app.get("/" + profile  + "/:app_name/assets/:asset", function(req, res) {
+  app.get("/:app_name/assets/:asset", function(req, res) {
     var asset = req.params.asset;
     var app_name = req.params.app_name;
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", asset );
     res.sendfile(filePath);
   });
 
-  app.get("/" + profile  + "/dependencies/:name", function(req, res) {
-    res.setHeader("Content-Type", "text/javascript");
-
-    fs.readFile( Path.join( process.cwd(), "apps", "dependencies", req.params.name ) , 
-      function(err, file){
-        if(err){
-          //get App Name From req.Host
-          var urlParts = req.headers.referer.split("/")
-          var app_name = ""
-          if( urlParts[ urlParts.length -1 ] === "" ){
-            app_name = urlParts[ urlParts.length -2 ]
-          }
-          else{
-            app_name = urlParts[ urlParts.length -1 ]
-          }
-          
-          return res.redirect("/" + profile + "/dependencies/" + app_name +  "/build");
-        }
-        return res.send(file);    
-      }
-    );
-  });
-
-  app.get("/" + profile  + "/dependencies/:app_name/build", 
-    function(req, res) {
-      res.setHeader("Content-Type", "text/javascript");
-      var app_name = req.params.app_name
-      Builder.buildDependency( app_name )
-      .then( 
-        function( contents ){
-          return res.send(contents);
-        } 
-      );
-    }
-  );
-
-  app.get("/" + profile  + "/:app_name/:entry", function(req, res) {
-    function sendEntry(req, res){
-      res.setHeader('if-none-match' , 'no-match-for-this');
-      var entry = req.params.entry;
-      var app_name = req.params.app_name;
-      var filePath = Path.join(  process.cwd() , "apps", app_name, "app", entry );
-      res.sendfile(filePath);    
-    }
-    
-    if ( Date.now() - ( Server.lastBuild || 0 ) < 5 * 1000 ){
-      Log.debug("Entry was just build by html route, not building entry", "actions/server", 127)
-      return sendEntry(req, res)
-    }
-    
-    var app_name = req.params.app_name;
-    AppBuild( app_name, "localhost", false, Server.domain )
-    .then( function(){ 
-      sendEntry(req,res);
-    }).fail( function(err){ Log.error(err, "actions/server", 135); res.send( err.toString(), 500 ) });
-    
-  });
-
-  app.get("/" + profile  + "/:app_name", function(req, res) {
-    var app_package;
+  app.get("/:app_name", function(req, res) {
     var app_name = req.params.app_name
+    return middleware(app_name,req,res)
+  });
+
+  http.createServer(app).listen(app.get('port'), function(){
+    console.info('3VOT Server running at: http://' + Server.domain );
+  });
+
+}
+
+function middleware(app_name,req, res) {
+  checkApp(app_name)
+  .then(preHook)
+  .then(function(){ buildApp(app_name); })
+  .then(function(){
+    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
+    res.sendfile(filePath);    
+  })
+  .fail(function(err){
+    Log.error(err);
+    res.send( err, 500 );
+  })
+};
+
+function checkApp(app_name){
+  var deferred = Q.defer();
+  process.nextTick(function(){
     try{
       app_package = require(Path.join(  process.cwd() , "apps", app_name, "package.json") );
+      deferred.resolve(app_name)
     }catch(err){
       Log.error(err, "actions/server", 154)
-      return res.send("App " + app_name + " Not found in " + profile)
-    }
+      deferred.reject("App " + app_name + " Not found in ")
+    } 
+  });
+  return deferred.promise; 
+}
+
+function buildApp(app_name){
+  var deferred = Q.defer();
+
+  Log.debug(app_name,"build app")
+
+  AppBuild( app_name, "localhost", false, Server.domain )
+  .then( function(){
+    Server.lastBuild = Date.now();
+    deferred.resolve(app_name);
+  })
+  .fail( function(err){ 
+    Log.error(err, "actions/server", 164); 
+    deferred.reject(err);
+  });
+
+  return deferred.promise;
+};
+
+
+function preHook(app_name){
+  var deferred = Q.defer();
 
     try{
       var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"pre.js" );
@@ -150,26 +132,13 @@ Server.startServer = function(){
             Log.debug(error, "server:146");
           }
           Log.debug(stdout, "server:146");
-          build();
+          return deferred.resolve(app_name)
         });
       }
-      else build();
-    }catch(err){ build(); }
+      else  return deferred.resolve(app_name)
 
-    function build(){
-      AppBuild( app_name, "localhost", false, Server.domain )
-      .then( function(){
-        Server.lastBuild = Date.now();
-        var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html");
-        res.sendfile(filePath)
-      })
-      .fail( function(err){ Log.error(err, "actions/server", 164); res.send( err.toString(), 500 ) });
-    };
-  
-  });
+    }catch(err){ return deferred.resolve(app_name) }
 
-  http.createServer(app).listen(app.get('port'), function(){
-    console.info('3VOT Server running at: http://' + Server.domain );
-  });
-
+    return deferred.promise;
 }
+

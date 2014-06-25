@@ -1,5 +1,4 @@
 var prompt = require("prompt")
-var LoadPackage = require("3vot-cloud/utils/package_loader")
 var Setup = require("../app/actions/profile_setup")
 var Create = require("3vot-cloud/app/create")
 var Path= require("path")
