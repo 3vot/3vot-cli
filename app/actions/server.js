@@ -18,7 +18,6 @@ var AppBuild = require("3vot-cloud/app/build")
 
 var Log = require("3vot-cloud/utils/log")
 
-var slashes = require("connect-slashes");
 
 module.exports = Server;
 
@@ -35,6 +34,8 @@ Server.startServer = function(){
   // all environments
   app.set('port', 3000);
   app.disable('etag');
+  app.enable('strict routing');
+
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -61,10 +62,13 @@ Server.startServer = function(){
     res.sendfile(filePath);
   });
 
-  app.use(slashes())
-
 
   app.get("/:app_name", function(req, res) {
+    var app_name = req.params.app_name
+    res.redirect("/" + app_name + "/")
+  });
+
+  app.get("/:app_name/", function(req, res) {
     var app_name = req.params.app_name
     return middleware(app_name,req,res)
   });
