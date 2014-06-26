@@ -12,6 +12,7 @@ var Profile = require("./profile")
 var App = require("./app")
 var Server = require("../app/actions/server")
 var Log = require("3vot-cloud/utils/log")
+var Stat = require("3vot-cloud/utils/stats")
 
 Log.setLevel("INFO")
 
