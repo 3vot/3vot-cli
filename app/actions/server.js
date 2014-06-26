@@ -18,6 +18,8 @@ var AppBuild = require("3vot-cloud/app/build")
 
 var Log = require("3vot-cloud/utils/log")
 
+var slashes = require("connect-slashes");
+
 module.exports = Server;
 
 Server.prompt =  function( isNitrous ){
@@ -36,7 +38,9 @@ Server.startServer = function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+
   app.use(app.router);
+
 
   app.get("/", function(req,res){
     res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ <a href='http://localhost:3000/APP_NAME'>http://localhost:3000/APP_NAME</a></h2>");
@@ -56,6 +60,9 @@ Server.startServer = function(){
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", asset );
     res.sendfile(filePath);
   });
+
+  app.use(slashes())
+
 
   app.get("/:app_name", function(req, res) {
     var app_name = req.params.app_name
