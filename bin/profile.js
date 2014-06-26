@@ -32,7 +32,7 @@ function create(callback){
       Create(result)
       .then( Setup )
       .then( function(promptOptions){
-        Stats.register( result )
+        Stats.track( "register",result )
         Log.info("3VOT created your profile and it's ready to use.")
         Log.info( ( "Now go to the project folder: cd 3vot_" + result.user_name ).bold )
         if(callback) return callback(result);
