@@ -15,7 +15,7 @@ function setup(callback){
     Setup(result)
     .then( function(){ Log.info("3VOT was correctly setup and it's ready to use.") } )
     .then( function(){ return Stats.track("site:setup", {kind: "new developer "}) } )
-    .then( function(){ if(callback) return callback(); })
+    .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/profile",43); } );
   });
 }
@@ -35,8 +35,8 @@ function create(callback){
         Stats.track( "register",result )
         Log.info("3VOT created your profile and it's ready to use.")
         Log.info( ( "Now go to the project folder: cd 3vot_" + result.user_name ).bold )
-        if(callback) return callback(result);
       })
+    .then(function(){ process.exit() })
     .fail( function(err){  Log.error(err, "./prompt/profile",43); });
   });
 }

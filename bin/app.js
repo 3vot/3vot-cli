@@ -32,11 +32,11 @@ function download(app_name){
 
   function onResult(err, result) {
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
-
     
     Download(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was downloaded. To preview locally type: 3vot server "); } )
     .then( function(){ return Stats.track("app:download", result ) } )
+    .then(function(){ process.exit() })
     .fail( function(err){  Log.error(err, "./prompt/app", 69 ); });
   };
 
@@ -64,6 +64,7 @@ function template(app_name){
       Download(Packs._3vot(result))
       .then( function(){ Log.info("OK. The App Template was downloaded. To preview locally type: 3vot server "); } )
       .then( function(){ return Stats.track("app:template", result ) } )
+      .then(function(){ process.exit() })
       .fail( function(err){  Log.error(err, "./prompt/app", 82 ); });  
    };
 
@@ -81,6 +82,7 @@ function publish(app_name){
       Publish(Packs._3vot(result))
       .then( function(){ Log.info("OK. The App was published"); } )
       .then( function(){ return Stats.track("app:publish", result ) } )
+      .then(function(){ process.exit() })
       .fail( function(err){ Log.error(err, "./prompt/app",96 ); });
   };
 
@@ -99,6 +101,7 @@ function publishAsMain(app_name){
     Publish(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was published"); } )
     .then( function(){ return Stats.track("app:publish:main", result ) } )
+    .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",111 ); });
   };
 
@@ -114,6 +117,7 @@ function upload(app_name){
     Upload(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was uploaded."); } )
     .then( function(){ return Stats.track("app:upload", result ) } )
+    .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
   }
 
@@ -130,6 +134,7 @@ function install(app_name){
     Install(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was installed"); } )
     .then( function(){ return Stats.track("app:install", result ) } )
+    .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",140 ); });
   };
 
@@ -146,6 +151,7 @@ function build(app_name){
     Build(result.app_name, result.target)
     .then( function(){ Log.info("OK. The App was build for " + result.target ); } )
     .then( function(){ return Stats.track("app:build", result ) } )
+    .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",154 ); });
   };
 

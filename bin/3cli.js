@@ -22,10 +22,6 @@ console.log("-- 3VOT DIGITAL CONTENT CLOUD --")
 
 Stat.setup("53ac8179d97b856681000000","b58de1794216364dc655f61975b7879b20c2e201c815da5e493175dd2f74b9c92f3ad29b1480640fa6a27e89be0e534e9d204b56b55c50e26cd7cd86452947bdbb10c341913e2061e0396562e3c61215671396d6e73cea908f5591e332980b8ca873d463576f4921bb76a5e6fdd8856f")
 
-process.on('uncaughtException', function (err) {
-  process.exit();
-}); 
-
 // *****************
 // CLI
 // *****************

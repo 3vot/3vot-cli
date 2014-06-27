@@ -31,17 +31,14 @@ Server.startServer = function(){
   var app = express();    
   var pck = require( Path.join( process.cwd(), "3vot.json" )  );
   var profile = pck.user_name;
-  // all environments
+
   app.set('port', 3000);
   app.disable('etag');
   app.enable('strict routing');
-
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-
   app.use(app.router);
-
 
   app.get("/", function(req,res){
     res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ <a href='http://localhost:3000/APP_NAME'>http://localhost:3000/APP_NAME</a></h2>");
