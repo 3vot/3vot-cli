@@ -38,8 +38,10 @@ function download(app_name){
     
     Download(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was downloaded. To preview locally type: 3vot server "); } )
-    .then( function(){ return Stats.track("app:download", result ) } )
-    .then( transformFromProduction )
+    .then( function(){ 
+      transformFromProduction(result);
+      return Stats.track("app:download", result ) 
+    })
     .then(function(){ process.exit() })
     .fail( function(err){  Log.error(err, "./prompt/app", 69 ); });
   };
