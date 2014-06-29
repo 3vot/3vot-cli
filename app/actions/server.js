@@ -10,6 +10,9 @@ var prompt = require("prompt")
 var argv = require('optimist').argv;
 var request = require("superagent")
 var devDomain = null;
+var Transform = require("../utils/transform")
+
+var mime = require('mime');
 
 var Server = {}
 var Builder = require("3vot-cloud/utils/builder");
@@ -17,7 +20,6 @@ var WalkDir = require("3vot-cloud/utils/walk")
 var AppBuild = require("3vot-cloud/app/build")
 
 var Log = require("3vot-cloud/utils/log")
-
 
 module.exports = Server;
 
@@ -48,17 +50,21 @@ Server.startServer = function(){
     var asset = req.params.asset;
     var app_name = req.params.app_name;
     var file = req.params.file;
+    
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", file );
-    res.sendfile(filePath);
+    var fileBody = Transform.readByType(filePath, "local", {app_name: app_name} );
+    res.set('Content-Type', mime.lookup(filePath));
+    res.send(fileBody);
   });
 
   app.get("/:app_name/assets/:asset", function(req, res) {
     var asset = req.params.asset;
     var app_name = req.params.app_name;
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", asset );
-    res.sendfile(filePath);
+    var fileBody = Transform.readByType(filePath, "local", {app_name: app_name});
+    res.set('Content-Type', mime.lookup(filePath));
+    res.send(fileBody);
   });
-
 
   app.get("/:app_name", function(req, res) {
     var app_name = req.params.app_name
@@ -82,7 +88,9 @@ function middleware(app_name,req, res) {
   .then(function(){ buildApp(app_name); })
   .then(function(){
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
-    res.sendfile(filePath);    
+    var fileBody = Transform.readByType(filePath, "local", { app_name: app_name });
+    res.set('Content-Type', mime.lookup(filePath));
+    res.send(fileBody);
   })
   .fail(function(err){
     Log.error(err);

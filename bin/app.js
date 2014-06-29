@@ -6,8 +6,11 @@ var Build = require("3vot-cloud/app/build")
 var Publish = require("3vot-cloud/app/publish")
 var Install = require("3vot-cloud/app/install")
 var Log = require("3vot-cloud/utils/log")
-
+var Path = require("path")
 var Stats = require("3vot-cloud/utils/stats")
+var WalkDir = require("3vot-cloud/utils/walk")
+var Transform = require("../app/utils/transform")
+var fs = require("fs")
 
 function promptOrResult( app_name, callback, prompts ){
  if(!prompts) prompts = []
@@ -36,6 +39,7 @@ function download(app_name){
     Download(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was downloaded. To preview locally type: 3vot server "); } )
     .then( function(){ return Stats.track("app:download", result ) } )
+    .then( transformFromProduction )
     .then(function(){ process.exit() })
     .fail( function(err){  Log.error(err, "./prompt/app", 69 ); });
   };
@@ -72,38 +76,23 @@ function template(app_name){
 }
 
 function publish(app_name){
-  var prompts = [ 
-    { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } ]
-
-  function onResult(err, result) {
-      Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
-
-      
-      Publish(Packs._3vot(result))
-      .then( function(){ Log.info("OK. The App was published"); } )
-      .then( function(){ return Stats.track("app:publish", result ) } )
-      .then(function(){ process.exit() })
-      .fail( function(err){ Log.error(err, "./prompt/app",96 ); });
-  };
-
-  promptOrResult(app_name, onResult, prompts )
-}
-
-function publishAsMain(app_name){
   
-  var prompts = [ 
-    { name: 'version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } ];
-    
   function onResult(err, result) {
-    result.isMain = true;
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
+
+    result.production = true;
+    result.transform = function(tempvars){
+      transformToProduction(result)
+    }
     
-    Publish(Packs._3vot(result))
-    .then( function(){ Log.info("OK. The App was published"); } )
-    .then( function(){ return Stats.track("app:publish:main", result ) } )
+    Upload(Packs._3vot(result))
+    .then( function(){ 
+      Log.info("App Available at: http://" + result.paths.productionBucket + "/" + result.user_name + "/" + result.app_name )
+      return Stats.track("app:publish", result ) 
+    })
     .then(function(){ process.exit() })
-    .fail( function(err){ Log.error(err, "./prompt/app",111 ); });
-  };
+    .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
+  }
 
   promptOrResult(app_name, onResult )
 }
@@ -113,10 +102,15 @@ function upload(app_name){
   function onResult(err, result) {
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
+    result.transform = function(tempvars){
+      transformToProduction(result,tempvars)
+    }
     
     Upload(Packs._3vot(result))
-    .then( function(){ Log.info("OK. The App was uploaded."); } )
-    .then( function(){ return Stats.track("app:upload", result ) } )
+    .then( function(app){ 
+      Log.info("App Available at: http://" + result.paths.productionBucket + "/" + result.user_name + "/" + result.app_name +  "_" + app.version )
+      return Stats.track("app:upload", result ) 
+    })
     .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
   }
@@ -130,7 +124,6 @@ function install(app_name){
   function onResult(err, result) {
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
-    
     Install(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was installed"); } )
     .then( function(){ return Stats.track("app:install", result ) } )
@@ -158,6 +151,26 @@ function build(app_name){
   promptOrResult(app_name, onResult )
 }
 
+function transformToProduction( result, tempvars ){
+  var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
+  if(tempvars) result.version = tempvars.app.version;
+  apps.forEach( function(path){
+    var body = Transform.readByType(path.path, "production", result )
+    fs.writeFileSync(path.path,body);
+  });
+}
+
+
+function transformFromProduction( result ){
+  var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
+
+  apps.forEach( function(path){
+    var body = Transform.readByType(path.path, "fromS3", {} )
+    fs.writeFileSync(path.path,body);
+  });
+
+  return true;
+}
 
 module.exports = {
   upload: upload,
@@ -165,6 +178,24 @@ module.exports = {
   publish: publish,
   build: build,
   install: install,
-  publishAsMain: publishAsMain,
   template: template
+}
+
+
+function publishOld(app_name){
+  var prompts = [ 
+    { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } ]
+
+  function onResult(err, result) {
+      Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
+
+      
+      Publish(Packs._3vot(result))
+      .then( function(){ Log.info("OK. The App was published"); } )
+      .then( function(){ return Stats.track("app:publish", result ) } )
+      .then(function(){ process.exit() })
+      .fail( function(err){ Log.error(err, "./prompt/app",96 ); });
+  };
+
+  promptOrResult(app_name, onResult, prompts )
 }

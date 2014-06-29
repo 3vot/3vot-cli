@@ -1,0 +1,14 @@
+<html> 
+  <head>
+
+    <%- @head %>
+    
+  </head>
+
+  <body id="_3vot_<%= @app_name %>" class="_3vot">
+
+  <script src="{3vot}/3vot.js"></script>
+
+ </body>
+ 
+</html>
