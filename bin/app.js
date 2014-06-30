@@ -167,12 +167,13 @@ function transformToProduction( result, tempvars ){
 function transformFromProduction( result ){
   var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
 
+  /*
   apps.forEach( function(path){
     var body = Transform.readByType(path.path, "fromS3", {} )
     fs.writeFileSync(path.path,body);
   });
 
-  /*
+  
   var indexPath = Path.join( process.cwd(), "apps", result.app_name , "index.html" );
   try{
     fs.readFileSync( indexPath )
