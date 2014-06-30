@@ -5,7 +5,7 @@ var placeholder = "{3vot}"
 var local = "//localhost:3000";
 var production = "//3vot.com"
 
-var Transform = { local: toLocal, production: toProduction }
+var Transform = { local: toLocal, production: toProduction, fromS3: fromS3 }
 
 function fromS3(body){
 	body = _3vot.replaceAll(body, "*/assets", "{3vot}/assets");

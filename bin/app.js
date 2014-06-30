@@ -11,6 +11,7 @@ var Stats = require("3vot-cloud/utils/stats")
 var WalkDir = require("3vot-cloud/utils/walk")
 var Transform = require("../app/utils/transform")
 var fs = require("fs")
+var eco = require("eco")
 
 function promptOrResult( app_name, callback, prompts ){
  if(!prompts) prompts = []
@@ -171,6 +172,17 @@ function transformFromProduction( result ){
     fs.writeFileSync(path.path,body);
   });
 
+  /*
+  var indexPath = Path.join( process.cwd(), "apps", result.app_name , "index.html" );
+  try{
+    fs.readFileSync( indexPath )
+  }catch(err){
+    var template = fs.readFileSync( Path.join( __filename , "..","..", "templates", "html.eco" ) ) 
+    result.serverTag = "{3vot}";
+    var index = eco.render(template, result)
+    fs.writeFileSync(indexPath, index);
+  }
+  */
   return true;
 }
 
