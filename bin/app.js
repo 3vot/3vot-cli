@@ -156,7 +156,7 @@ function build(app_name){
 
 function transformToProduction( result, tempvars ){
   var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
-  if(tempvars) result.version = tempvars.app.version;
+  if(tempvars) result.version = tempvars.version;
   apps.forEach( function(path){
     var body = Transform.readByType(path.path, "production", result )
     fs.writeFileSync(path.path,body);
