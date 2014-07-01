@@ -14,13 +14,14 @@ A cool and quick example of an App build with 3VOT
 ```
 3vot register
 ```
+CLI will create a folder, here we call it 'PROJECT_ROOT'
 
 ### Download an Example
 
 ```
-3vot download --app d3demo
+3vot download --app todo
 ```
-1. CLI will ask for the profile: 3vot
+1. CLI will ask for the profile: tutorial
 2. Hit Enter for other options
 
 ### Upload to your Sandbox
@@ -32,7 +33,7 @@ A cool and quick example of an App build with 3VOT
 ### Check the Code
 **Browse to the Project Folder and open**
 ```
-PROJECT_FOLDER/apps/APP_NAME/index.js
+PROJECT_FOLDER/apps/todo/index.js
 ```
 
 **Develop in Localhost**
