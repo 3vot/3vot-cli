@@ -1,9 +1,17 @@
 ### 3VOT is a Full Stack Platform to build and deploy Profesional Javascript Apps
 
-**With 3VOT-CLI write Apps 5X faster and publish them for free in 3VOT Cloud**
-You may also embed apps in other pages and deploy them in your own S3 Bucket, Cloud or Server
+**Build JS Apps that don't refresh using code from NPM & Github**
+This results in Maintable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
 
-Profesional Javascript Applications have the following features:
+**Download Apps, Examples and Templates from The 3VOT App Store**
+Most 3VOT Apps are Open Source and can be downloaded with one command. Use them as Tutorial, a Base Template or a really advanced starting point for your project.
+
+**Publish Apps for free in 3VOT Cloud**
+One Command to build and deploy production ready Apps, using 3VOT Cloud Free Tier that's already configured with CDN's, Cache and Analytics to handle millions of visits at top speeds. Easily deploy to S3 or embbed in CMS's or Web Pages.
+
+**3VOT is a production line of Apps, use it to learn or to empower your demaning App Development Teams**
+
+**Profesional Javascript Applications have the following features:**
 * Standard HTML, JS & CSS without "Hacks" that everybody can understand top to bottom.
 * No Page Refresh ( MVC Single Page Applications with no code-spaguetti )
 * Modular Code ( written in modules, structured in files and folders )
@@ -11,7 +19,7 @@ Profesional Javascript Applications have the following features:
 * Write Clean NodeJS Style code that runs in the browser
 * Use NPM & Github Dependencies
 
-3VOT simplifes and unifies how we use the following technolgies
+**3VOT simplifes and unifies how we use the following technolgies**
 * **Browserify:** Improves how we write and reuse code.
 * **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
 * **NPM:** Select from thousand dependencies and require them NODEJS Style
