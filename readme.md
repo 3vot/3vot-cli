@@ -16,11 +16,12 @@ A cool and quick example of an App build with 3VOT
 ```
 
 ### Download an Example
-CLI will ask for the profile: 3vot
-type enter for other options
+
 ```
 3vot download --app d3demo
 ```
+1. CLI will ask for the profile: 3vot
+2. Hit Enter for other options
 
 ### Upload to your Sandbox
 ```
