@@ -60,3 +60,9 @@ MIT
 As a Mature Open Source Project we encourage collaboration with an Open Mind and Intelligent Communication skills. Both are required.
 
 Feel free to submit issues or Pull Requests, we are a commited team working full time and will work any discrepancy out in a friendly way with commiters, don't worry, just submit it!
+
+## On the Shoulders of Giants ##
+
+3VOT is built on top of lessons and/or code from the leading open source libraries and minds in the world. Special Recognition to Alex Maccaw for his vision and work on modular code with Spine and Hem Server Specially and to Substack's Unix Mentality and it's Browserify Open Source Library. The Amazing work by Visionmedia is all over the place in Express and SuperAgent. PLV8 powers ours backend thanks to mgutz concepts. Finally thanks to creationix for it's pair programming sessions.
+
+Lessons learned while using Grunt and Yeoman definitely shaped 3VOT, but those projects are not used on the CLI.
