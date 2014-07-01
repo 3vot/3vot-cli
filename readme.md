@@ -1,28 +1,69 @@
-####3VOT-CLI Intro
+You must have [NodeJS](nodejs.org) installed on your computer.
 
-3VOT helps you build and deploy apps quicker. We call it Frontend as a Service.
+### Install 3VOT CLI.JS
+~~~
+npm install 3vot-cli -g
+~~~
 
-You can build apps with any javascript framework and style them the best way you can. 
+[Wiki/Documentation](https://github.com/3vot/3vot-cli/wiki)
 
-3VOT embraces the concept of modules and web components, you can re-use any component from NPM and Bower. It's an amazing way to build Quality Apps in a few days, that's 5x faster.
+## 5 Seconds "Hello World" ##
+A cool and quick example of an App build with 3VOT
 
-3VOT is also a community so you can simply copy an app for free, to your profile and start using as you own; or make a few changes to make it a perfect fit. Developers and Entrepreneurs can also build, customize and sell you amazing apps;
+### Developer Registration
+```
+3vot register
+```
 
-Here is the Information for the Developer to get started, but even if you are not a developer: give it a try.
+### Download an Example
 
+```
+3vot download --app d3demo
+```
+1. CLI will ask for the profile: 3vot
+2. Hit Enter for other options
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/Tcf_FBbIRpM?rel=0" frameborder="0" allowfullscreen></iframe>
+### Upload to your Sandbox
+```
+3vot upload --app d3demo
+```
 
-#### Requirements
+## Next 3 Steps ##
+### Check the Code
+**Browse to the Project Folder and open**
+```
+PROJECT_FOLDER/apps/APP_NAME/index.js
+```
 
-- [NodeJS](http://nodejs.org/)
-- You can go trought this guides in you local console (Mac) or using [Nitrous.io](https://nitrous.io)
+**Develop in Localhost**
+```
+3vot server
+```
+### Other Examples
+Soon
 
+## Lean More ##
+[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
 
-#### 3VOT-CLI Index
+## Use & Support  ##
+All 3VOT Solutions are Open Source and should be used to progress. Check out [Store](3vot.com/3vot/store) [Directory](3vot.com/3vot/directory) [Blog](3vot.com/blog)
 
-- [3VOT-CLI Intro](https://github.com/3vot/3vot-cli/blob/master/readme.md)
-- [Getting Started](https://github.com/3vot/3vot-cli/blob/master/gettingStarted.md)
+3VOT is also being used commercially by several organizations like Fusion.net & Rodco S.A.
 
-Hope you love your first experience with 3vot's Front End as a Service Platform!
-For support, pair programming sessions or any feedback, please visit us at [3vot.com](http://3vot.com/)
+3VOT is an ISV Partner of Salesforce.com where CLI is published as CLAY in App Exchange as an Enterprise Solution.
+
+For both cases we provide profesional remote and on-site support, custom develpment and training at an agreed hourly rate **contact us at support@3vot.com**
+
+## LICENSE ##
+MIT 
+
+## Collaboration  ##
+As a Mature Open Source Project we encourage collaboration with an Open Mind and Intelligent Communication skills. Both are required.
+
+Feel free to submit issues or Pull Requests, we are a commited team working full time and will work any discrepancy out in a friendly way with commiters, don't worry, just submit it!
+
+## On the Shoulders of Giants ##
+
+3VOT is built on top of lessons and/or code from the leading open source libraries and minds in the world. Special Recognition to Alex Maccaw for his vision and work on modular code with Spine and Hem Server Specially and to Substack's Unix Mentality and it's Browserify Open Source Library. The Amazing work by Visionmedia is all over the place in Express and SuperAgent. PLV8 powers ours backend thanks to mgutz concepts. Finally thanks to creationix for it's pair programming sessions.
+
+Lessons learned while using Grunt and Yeoman definitely shaped 3VOT, but those projects are not used on the CLI.
