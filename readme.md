@@ -1,6 +1,6 @@
 ### 3VOT is a Full Stack Platform to build and deploy Profesional Javascript Apps
 
-** With 3VOT-CLI write Apps 5X faster and publish them for free in 3VOT Cloud**
+**With 3VOT-CLI write Apps 5X faster and publish them for free in 3VOT Cloud**
 You may also embed apps in other pages and deploy them in your own S3 Bucket, Cloud or Server
 
 Profesional Javascript Applications have the following features:
