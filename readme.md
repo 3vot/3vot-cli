@@ -4,7 +4,7 @@
 You may also embed apps in other pages and deploy them in your own S3 Bucket, Cloud or Server
 
 Profesional Javascript Applications have the following features:
-* Standard HTML, JS & CSS without "Hacks"
+* Standard HTML, JS & CSS without "Hacks" that everybody can understand top to bottom.
 * No Page Refresh ( MVC Single Page Applications with no code-spaguetti )
 * Modular Code ( written in modules, structured in files and folders )
 * Multiplatform ( choose what code is loaded in Mobile, Tablet and Desktops  )
