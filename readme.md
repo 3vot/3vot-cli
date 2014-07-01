@@ -1,50 +1,75 @@
-You must have [NodeJS](nodejs.org) installed on your computer.
+### 3VOT is a Full Stack Platform to build and deploy Profesional Javascript Apps
 
-### Install 3VOT CLI.JS
+** With 3VOT-CLI write Apps 5X faster and publish them for free in 3VOT Cloud**
+You may also embed apps in other pages and deploy them in your own S3 Bucket, Cloud or Server
+
+Profesional Javascript Applications have the following features:
+* Standard HTML, JS & CSS without "Hacks"
+* No Page Refresh ( MVC Single Page Applications with no code-spaguetti )
+* Modular Code ( written in modules, structured in files and folders )
+* Multiplatform ( choose what code is loaded in Mobile, Tablet and Desktops  )
+* Write Clean NodeJS Style code that runs in the browser
+* Use NPM & Github Dependencies
+
+3VOT simplifes and unifies how we use the following technolgies
+* **Browserify:** Improves how we write and reuse code.
+* **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
+* **NPM:** Select from thousand dependencies and require them NODEJS Style
+
+
+### Brief
+3VOT is a simple yet powerfull way to build robust single page applications and deploy them as an static asset. It bring several of the leading industry concepts like Code Modularization, Server-less Deployment, Dependency Use & Managment and Multiplatform Development ( also called Responsive Design with Server Side Components ) 
+
+
+
+### Demos & Examples
+Soon
+
+### Documentation
+[Documentation](https://github.com/3vot/3vot-cli/wiki)
+[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
+
+
+## An App in 5 Seconds ##
+
+**You must have [NodeJS](nodejs.org) installed on your computer.**
+
+### Install 3VOT-CLI
 ~~~
 npm install 3vot-cli -g
 ~~~
-
-[Wiki/Documentation](https://github.com/3vot/3vot-cli/wiki)
-
-## 5 Seconds "Hello World" ##
-A cool and quick example of an App build with 3VOT
+Some users may need to: sudo npm install 3vot-cli -g
 
 ### Developer Registration
 ```
 3vot register
 ```
-CLI will create a folder, here we call it 'PROJECT_ROOT'
 
 ### Download an Example
 
 ```
-3vot download --app todo
+3vot download
 ```
-1. CLI will ask for the profile: tutorial
-2. Hit Enter for other options
+* **App:** todo
+* **Profile:** tutorial
+* Hit Enter for other options
 
-### Upload to your Sandbox
+### Upload to your 3VOT Cloud Profile
 ```
-3vot upload --app d3demo
+3vot upload
 ```
+* **App:** todo
 
-## Next 3 Steps ##
-### Check the Code
+### Develop
+```
+3vot server
+```
+[http://localhost:3000]
 **Browse to the Project Folder and open**
 ```
 PROJECT_FOLDER/apps/todo/index.js
 ```
 
-**Develop in Localhost**
-```
-3vot server
-```
-### Other Examples
-Soon
-
-## Lean More ##
-[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
 
 ## Use & Support  ##
 All 3VOT Solutions are Open Source and should be used to progress. Check out [Store](3vot.com/3vot/store) [Directory](3vot.com/3vot/directory) [Blog](3vot.com/blog)
