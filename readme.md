@@ -1,14 +1,52 @@
-You must have [NodeJS](nodejs.org) installed on your computer.
+### 3VOT is a Full Stack Platform to build and deploy Profesional Javascript Apps
 
-### Install 3VOT CLI.JS
+**Build JS Apps that don't refresh using code from NPM & Github**
+This results in Maintable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
+
+**Download Apps, Examples and Templates from The 3VOT App Store**
+Most 3VOT Apps are Open Source and can be downloaded with one command. Use them as Tutorial, a Base Template or a really advanced starting point for your project.
+
+**Publish Apps for free in 3VOT Cloud**
+One Command to build and deploy production ready Apps, using 3VOT Cloud Free Tier that's already configured with CDN's, Cache and Analytics to handle millions of visits at top speeds. Easily deploy to S3 or embbed in CMS's or Web Pages.
+
+**3VOT is a production line of Apps, use it to learn or to empower your demaning App Development Teams**
+
+**Profesional Javascript Applications have the following features:**
+* Standard HTML, JS & CSS without "Hacks" that everybody can understand top to bottom.
+* No Page Refresh ( MVC Single Page Applications with no code-spaguetti )
+* Modular Code ( written in modules, structured in files and folders )
+* Multiplatform ( choose what code is loaded in Mobile, Tablet and Desktops  )
+* Write Clean NodeJS Style code that runs in the browser
+* Use NPM & Github Dependencies
+
+**3VOT simplifes and unifies how we use the following technolgies**
+* **Browserify:** Improves how we write and reuse code.
+* **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
+* **NPM:** Select from thousand dependencies and require them NODEJS Style
+
+
+### Brief
+3VOT is a simple yet powerfull way to build robust single page applications and deploy them as an static asset. It bring several of the leading industry concepts like Code Modularization, Server-less Deployment, Dependency Use & Managment and Multiplatform Development ( also called Responsive Design with Server Side Components ) 
+
+
+
+### Demos & Examples
+Soon
+
+### Documentation
+[Documentation](https://github.com/3vot/3vot-cli/wiki)
+[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
+
+
+## An App in 5 Seconds ##
+
+**You must have [NodeJS](nodejs.org) installed on your computer.**
+
+### Install 3VOT-CLI
 ~~~
 npm install 3vot-cli -g
 ~~~
-
-[Wiki/Documentation](https://github.com/3vot/3vot-cli/wiki)
-
-## 5 Seconds "Hello World" ##
-A cool and quick example of an App build with 3VOT
+Some users may need to: sudo npm install 3vot-cli -g
 
 ### Developer Registration
 ```
@@ -18,32 +56,28 @@ A cool and quick example of an App build with 3VOT
 ### Download an Example
 
 ```
-3vot download --app d3demo
+3vot download
 ```
-1. CLI will ask for the profile: 3vot
-2. Hit Enter for other options
+* **App:** todo
+* **Profile:** tutorial
+* Hit Enter for other options
 
-### Upload to your Sandbox
+### Upload to your 3VOT Cloud Profile
 ```
-3vot upload --app d3demo
+3vot upload
 ```
+* **App:** todo
 
-## Next 3 Steps ##
-### Check the Code
-**Browse to the Project Folder and open**
-```
-PROJECT_FOLDER/apps/APP_NAME/index.js
-```
-
-**Develop in Localhost**
+### Develop
 ```
 3vot server
 ```
-### Other Examples
-Soon
+[http://localhost:3000]
+**Browse to the Project Folder and open**
+```
+PROJECT_FOLDER/apps/todo/index.js
+```
 
-## Lean More ##
-[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
 
 ## Use & Support  ##
 All 3VOT Solutions are Open Source and should be used to progress. Check out [Store](3vot.com/3vot/store) [Directory](3vot.com/3vot/directory) [Blog](3vot.com/blog)
