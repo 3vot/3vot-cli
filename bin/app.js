@@ -83,6 +83,10 @@ function publish(app_name){
   function onResult(err, result) {
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
+  var prompts = [ 
+    { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } ]
+  ]
+
     result.production = true;
     result.transform = function(tempvars){
       transformToProduction(result)
@@ -97,7 +101,7 @@ function publish(app_name){
     .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
   }
 
-  promptOrResult(app_name, onResult )
+  promptOrResult(app_name, onResult, prompts )
 }
 
 function upload(app_name){
@@ -156,7 +160,7 @@ function build(app_name){
 
 function transformToProduction( result, tempvars ){
   var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
-  if(tempvars) result.version = tempvars.version;
+  if(tempvars && tempvars.app) result.version = tempvars.app.version;
   apps.forEach( function(path){
     var body = Transform.readByType(path.path, "production", result )
     fs.writeFileSync(path.path,body);

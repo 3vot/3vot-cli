@@ -18,6 +18,7 @@ var Server = {}
 var Builder = require("3vot-cloud/utils/builder");
 var WalkDir = require("3vot-cloud/utils/walk")
 var AppBuild = require("3vot-cloud/app/build")
+var rimraf = require("rimraf")
 
 var Log = require("3vot-cloud/utils/log")
 
@@ -73,7 +74,7 @@ Server.startServer = function(){
 
   app.get("/:app_name/", function(req, res) {
     var app_name = req.params.app_name
-    return middleware(app_name,req,res)
+    middleware(app_name,req,res)
   });
 
   http.createServer(app).listen(app.get('port'), function(){
@@ -84,17 +85,17 @@ Server.startServer = function(){
 
 function middleware(app_name,req, res) {
   checkApp(app_name)
+  .then(clearAppFolder)
   .then(preHook)
-  .then(function(){ buildApp(app_name); })
+  .then(buildApp)
   .then(function(){
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
     var fileBody = Transform.readByType(filePath, "local", { app_name: app_name });
     res.set('Content-Type', mime.lookup(filePath));
-    res.send(fileBody);
+    return res.send(fileBody);
   })
   .fail(function(err){
-    Log.error(err);
-    res.send( err, 500 );
+    res.send( err.stack || err.toString());
   })
 };
 
@@ -112,19 +113,31 @@ function checkApp(app_name){
   return deferred.promise; 
 }
 
+function clearAppFolder(app_name){
+  var deferred = Q.defer();
+  var path = Path.join( process.cwd(), 'apps', app_name, 'app' );
+  rimraf(path, function(err){
+    fs.mkdirSync(path);
+    fs.mkdirSync( Path.join(path,"assets") );
+    return deferred.resolve(app_name);
+  })
+
+  return deferred.promise;
+}
+
 function buildApp(app_name){
   var deferred = Q.defer();
 
-  Log.debug(app_name,"build app")
+  Log.debug(app_name,"server",132)
 
   AppBuild( app_name, "localhost", false, Server.domain )
   .then( function(){
-    Server.lastBuild = Date.now();
-    deferred.resolve(app_name);
+    return deferred.resolve(app_name);
   })
   .fail( function(err){ 
-    Log.error(err, "actions/server", 164); 
-    deferred.reject(err);
+    //Log.error(err, "actions/server", 164); 
+    console.log("****************")
+    return deferred.reject(err);
   });
 
   return deferred.promise;
