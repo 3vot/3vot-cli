@@ -79,14 +79,14 @@ function template(app_name){
 }
 
 function publish(app_name){
-  
-  function onResult(err, result) {
-    Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
   var prompts = [ 
     { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } 
   ]
   
+  function onResult(err, result) {
+    Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
+
     result.production = true;
     result.transform = function(tempvars){
       transformToProduction(result)
