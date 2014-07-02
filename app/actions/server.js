@@ -87,7 +87,7 @@ function middleware(app_name,req, res) {
   checkApp(app_name)
   .then(clearAppFolder)
   .then(preHook)
-  .then(buildApp)
+  .then(function(){ return buildApp(app_name); })
   .then(function(){
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
     var fileBody = Transform.readByType(filePath, "local", { app_name: app_name });
@@ -136,7 +136,6 @@ function buildApp(app_name){
   })
   .fail( function(err){ 
     //Log.error(err, "actions/server", 164); 
-    console.log("****************")
     return deferred.reject(err);
   });
 
