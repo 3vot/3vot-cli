@@ -2,20 +2,20 @@
 
 There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
 
-**History**
+##History##
 Back in the day web apps where build by an application server (php, nodejs, .net, rails) passed trought the server and page needed to be refreshed. Single Page Applications where born with Frontend Servers lik NodeJS and Rails, web apps were loaded on the browser and communicate via AJAX with API Servers.
 
-**Innovation**
+##Innovation##
 With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable.
 
-**Server-Less Apps**
+##Server-Less Apps##
 This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS.
 * Write code in modules
 * Reuse code
 * Installing Dependencies from NPM
 * Deploy Standalone or Embbeded in Traditional Apps, Pages or CMS's
 
-**Mission**
+##Mission##
 We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI.
 
 [Try the 5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started) or read on this introduction.
