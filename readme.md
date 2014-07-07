@@ -10,6 +10,8 @@ To improve User Experience Single Page Apps where born. Frontend Servers like No
 ###Innovation###
 With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable.
 
+Taking another step up we made it real easy to build Multiplatform Apps (Desktop,Tablet, Mobile) with only one set of code. 
+
 ###Server-Less Apps###
 This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS.
 * Write code in modules
