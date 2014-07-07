@@ -1,15 +1,22 @@
-### Use 3VOT to build server-less Javascript Apps & more ###
+### Use 3VOT to build top of the line Javascript Apps & Systems ###
 
-**Brief:**
 There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
 
-Initially these apps where build/compiled by a frontend server (php, nodejs, .net, rails), loaded just once on the browser and communicate via AJAX with API Servers.
+**History**
+Back in the day web apps where build by an application server (php, nodejs, .net, rails) passed trought the server and page needed to be refreshed. Single Page Applications where born with Frontend Servers lik NodeJS and Rails, web apps were loaded on the browser and communicate via AJAX with API Servers.
 
-With 3VOT you can build the same app with your favorite framework, you just don't need that server anymore. One less moving piece to worry about, and with the Open Source 3VOT Infrastructure it's infinitly scalable.
+**Innovation**
+With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable.
 
-This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS, writing code in modules, reusing code, installing Dependencies from NPM; but finally deploying an static app that can run both standalone or embedded in tradional apps, pages and CMS's.
+**Server-Less Apps**
+This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS.
+* Write code in modules
+* Reuse code
+* Installing Dependencies from NPM
+* Deploy Standalone or Embbeded in Traditional Apps, Pages or CMS's
 
-We build 3VOT looking to provide developers with a great experience, all redudant actions are automated by one line command executed from the command-line.
+**Mission**
+We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI.
 
 [Try the 5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started) or read on this introduction.
 
@@ -22,7 +29,7 @@ This results in Maintable Apps that you can build 5X faster, reusing and writtin
 Most 3VOT Apps are Open Source and can be downloaded with one command. Use them as Tutorial, a Base Template or a really advanced starting point for your project.
 
 **Publish Apps for free in 3VOT Cloud**
-One Command to build and deploy production ready Apps, using 3VOT Cloud Free Tier that's already configured with CDN's, Cache and Analytics to handle millions of visits at top speeds. Easily deploy to S3 or embbed in CMS's or Web Pages.
+One Command to deploy production ready Apps, 3VOT is configured with CDN's, Cache and Analytics to handle millions of visits at top speeds. Easily deploy to 3VOT Cloud, your own 3VOT Cloud or your own servers.
 
 **3VOT is a production line of Apps, use it to learn or to empower your demaning App Development Teams**
 
@@ -38,12 +45,6 @@ One Command to build and deploy production ready Apps, using 3VOT Cloud Free Tie
 * **Browserify:** Improves how we write and reuse code.
 * **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
 * **NPM:** Select from thousand dependencies and require them NODEJS Style
-
-
-### Brief
-3VOT is a simple yet powerfull way to build robust single page applications and deploy them as an static asset. It bring several of the leading industry concepts like Code Modularization, Server-less Deployment, Dependency Use & Managment and Multiplatform Development ( also called Responsive Design with Server Side Components ) 
-
-
 
 ### Demos & Examples
 Soon
