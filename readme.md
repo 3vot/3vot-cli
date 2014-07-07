@@ -1,6 +1,6 @@
 ### Use 3VOT to build server-less Javascript Apps & more ###
 
-** Brief: **
+**Brief:**
 There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
 
 Initially these apps where build/compiled by a frontend server (php, nodejs, .net, rails), loaded just once on the browser and communicate via AJAX with API Servers.
