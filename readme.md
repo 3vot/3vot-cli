@@ -1,13 +1,13 @@
 ### Use 3VOT to build server-less Javascript Apps & more ###
 
-** Brief:
+** Brief:**
 There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
 
 Initially these apps where build/compiled by a frontend server (php, nodejs, .net, rails), loaded just once on the browser and communicate via AJAX with API Servers.
 
 With 3VOT you can build the same app with your favorite framework, you just don't need that server anymore. One less moving piece to worry about, and with the Open Source 3VOT Infrastructure it's infinitly scalable.
 
-This opens up a world of opportunities, because we have innovated a way to build apps like we do in NODEJS, using all NPM Dependencies, but without requiring 
+This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS, writing code in modules, reusing code, installing Dependencies from NPM; but finally deploying an static app that can run both standalone or embedded in tradional apps, pages and CMS's.
 
 We build 3VOT looking to provide developers with a great experience, all redudant actions are automated by one line command executed from the command-line.
 
