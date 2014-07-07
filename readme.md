@@ -1,4 +1,19 @@
-### 3VOT is a Full Stack Platform to build and deploy Profesional Javascript Apps
+### Use 3VOT to build server-less Javascript Apps & more ###
+
+** Brief:
+There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
+
+Initially these apps where build/compiled by a frontend server (php, nodejs, .net, rails), loaded just once on the browser and communicate via AJAX with API Servers.
+
+With 3VOT you can build the same app with your favorite framework, you just don't need that server anymore. One less moving piece to worry about, and with the Open Source 3VOT Infrastructure it's infinitly scalable.
+
+This opens up a world of opportunities, because we have innovated a way to build apps like we do in NODEJS, using all NPM Dependencies, but without requiring 
+
+We build 3VOT looking to provide developers with a great experience, all redudant actions are automated by one line command executed from the command-line.
+
+[Try the 5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started) or read on this introduction.
+
+Full Stack Platform to build and deploy Profesional Javascript Apps
 
 **Build JS Apps that don't refresh using code from NPM & Github**
 This results in Maintable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
