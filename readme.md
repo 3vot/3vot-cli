@@ -5,7 +5,7 @@ There is a new line of apps on the web, they are quick. No Click and Wait. When 
 ###History###
 Back in the day web apps where build by an application server (php, nodejs, .net, rails) passed trought the server and page needed to be refreshed. 
 
-To improve UX Single Page Apps where born with Frontend Servers lik NodeJS and Rails, web apps were loaded on the browser and communicate via AJAX with API Servers.
+To improve User Experience Single Page Apps where born. Frontend Servers like NodeJS and Rails made it possible to send web apps as a package that was loaded only once by the browser and interact from there on via AJAX with API Servers.
 
 ###Innovation###
 With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable.
