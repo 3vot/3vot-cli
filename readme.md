@@ -25,7 +25,7 @@ We build 3VOT looking to provide developers with a great experience, build and d
 ### Learning Resources
 **[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
 
-**[Documentation](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+**[Documentation](https://github.com/3vot/3vot-cli/wiki)**
 
 
 ### Demos & Examples
