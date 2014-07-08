@@ -22,7 +22,15 @@ This opens up a world of opportunities, because we have innovated a way to build
 ###Mission###
 We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI.
 
-[Try the 5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started) or read on this introduction.
+**[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+
+### Demos & Examples
+Soon
+
+### Documentation
+[Documentation](https://github.com/3vot/3vot-cli/wiki)
+[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
+
 
 ##Full Stack Platform to build and deploy Profesional Javascript Apps##
 
@@ -49,54 +57,6 @@ One Command to deploy production ready Apps, 3VOT is configured with CDN's, Cach
 * **Browserify:** Improves how we write and reuse code.
 * **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
 * **NPM:** Select from thousand dependencies and require them NODEJS Style
-
-### Demos & Examples
-Soon
-
-### Documentation
-[Documentation](https://github.com/3vot/3vot-cli/wiki)
-[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
-
-
-## An App in 5 Seconds ##
-
-**You must have [NodeJS](nodejs.org) installed on your computer.**
-
-### Install 3VOT-CLI
-~~~
-npm install 3vot-cli -g
-~~~
-Some users may need to: sudo npm install 3vot-cli -g
-
-### Developer Registration
-```
-3vot register
-```
-
-### Download an Example
-
-```
-3vot download
-```
-* **App:** todo
-* **Profile:** tutorial
-* Hit Enter for other options
-
-### Upload to your 3VOT Cloud Profile
-```
-3vot upload
-```
-* **App:** todo
-
-### Develop
-```
-3vot server
-```
-[http://localhost:3000]
-**Browse to the Project Folder and open**
-```
-PROJECT_FOLDER/apps/todo/index.js
-```
 
 
 ## Use & Support  ##
