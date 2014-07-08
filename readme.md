@@ -32,7 +32,7 @@ Soon
 [Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
 
 
-##Full Stack Platform to build and deploy Profesional Javascript Apps##
+##The Long Description##
 
 **Build JS Apps that don't refresh using code from NPM & Github**
 This results in Maintable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
