@@ -8,34 +8,34 @@ Back in the day web apps where build by an application server (php, nodejs, .net
 To improve User Experience Single Page Apps where born. Frontend Servers like NodeJS and Rails made it possible to send web apps as a package that was loaded only once by the browser and interact from there on via AJAX with API Servers.
 
 ###Innovation###
-With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable.
+With 3VOT you can build the same app with your favorite framework, but we don't need the server anymore **one less moving piece to worry about** and with 3VOT Cloud Architecture it's infinitly scalable. 3VOT apps are packaged as **just one file loaded to the browser, no HTTP requests** to any server!
 
 Taking another step up we made it real easy to build Multiplatform Apps (Desktop,Tablet, Mobile) with only one set of code. 
 
 ###Server-Less Apps###
 This opens up a world of opportunities, because we have innovated a way to build 100% Browser Apps with all the power and simplicity of NODEJS.
-* Write code in modules
+* Write browser code in modules
 * Reuse code
 * Installing Dependencies from NPM
 * Deploy Standalone or Embbeded in Traditional Apps, Pages or CMS's
 
 ###Mission###
-We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI.
+We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI and then published to 3VOT's Cloud.
 
+### Learning Resources
 **[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+
+**[Documentation](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+
 
 ### Demos & Examples
 Soon
-
-### Documentation
-[Documentation](https://github.com/3vot/3vot-cli/wiki)
-[Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)
 
 
 ##The Long Description##
 
 **Build JS Apps that don't refresh using code from NPM & Github**
-This results in Maintable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
+This results in Maintainable Apps that you can build 5X faster, reusing and writting less code. There is no Magic, standard HTML, CSS and JS, no propietary lock-in or restrictions on patterns, code or frameworks.
 
 **Download Apps, Examples and Templates from The 3VOT App Store**
 Most 3VOT Apps are Open Source and can be downloaded with one command. Use them as Tutorial, a Base Template or a really advanced starting point for your project.
