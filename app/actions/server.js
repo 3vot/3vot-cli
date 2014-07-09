@@ -74,6 +74,7 @@ Server.startServer = function(){
 
   app.get("/:app_name/", function(req, res) {
     var app_name = req.params.app_name
+    if(app_name.indexOf(".") > -1) return res.send(404); // ignore files just apps
     middleware(app_name,req,res)
   });
 
