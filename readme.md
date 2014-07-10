@@ -56,7 +56,14 @@ With 3VOT you can write an app in modules and components, and choose which compo
 ##The Production Line of Apps
 3VOT was build as a full-fledged profesional production line and it has a command line tool to automated everything.
 
-TODO[DETAILS]
+3VOT introduces the concept of version, each deployment is versioned so it's super simple to go back to old builds.
+
+In the same way 3VOT introduces App Downloads, so you can download any version of an App and use it as a template for a new app. Your organization can set base proyects or templates that are already structured a standard way.
+
+Dependency Managment is automated, so there is no worries about one developer working in one version of Jquery crasing with another one, integration is done automatically with every build.
+
+Onbording new developers is simple, no enviroment to setup, everything is standard. Training is simple as well, you may create apps specifically for that and have new-comers download them. That's how with 3VOT junior developers can build enterprise apps.
+
 
 ##Features
 
