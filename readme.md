@@ -37,8 +37,6 @@ npm install 3vot-cli -g
 ### Examples and Demos
 **What can developers build with 3VOT:** Everything that's browser based and more!
 
-Javascript Apps: Maintanable and Reusable Single Page Applications
-
 EXAMPLES && DEMOS COMMING SOON
 
 * Javascript Apps: Maintanable and Reusable Single Page Applications
