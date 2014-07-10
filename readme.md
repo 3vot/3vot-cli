@@ -40,10 +40,13 @@ npm install 3vot-cli -g
 TODO[Add Examples]
 
 ###History###
-Frontend Apps use to be build using the Client-Server model, using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed. 
+Frontend Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed. 
 
-Modern frontend apps are called single page applications. Think Facebook, where the page does not refresh when you Like or Share; Now imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it just happends instantly. 
+Modern frontend apps are called Single Page Applications. Think Facebook, where the page does not refresh when you Like or Share; 
 
+Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it just happends instantly. 
+
+**Remember Single Page Apps are not the future, they are the present**
 
 ###The next Generation of Mobile First and Responsive###
 They are good alternatives when you don't have the technology, but what if you could control a dedicated experience for each device, not a degraded for desktop or degraded for mobile, but awesome in both.
