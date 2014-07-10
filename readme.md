@@ -34,6 +34,8 @@ npm install 3vot-cli -g
 
 **[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
 
+**[Embedded Apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps)**
+
 ### Examples and Demos
 **What can developers build with 3VOT:** Everything that's browser based and more!
 
