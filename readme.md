@@ -30,10 +30,6 @@ We build 3VOT looking to provide developers with a great experience, build and d
 **[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
 
 
-### Demos & Examples
-Soon
-
-
 ##The Long Description##
 
 **Build JS Apps that don't refresh using code from NPM & Github**
