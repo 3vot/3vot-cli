@@ -28,7 +28,7 @@ npm install 3vot-cli -g
 ```
 
 ### Documentation
-**[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+**[5 minute Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
 
 **[Documentation](https://github.com/3vot/3vot-cli/wiki/Documentation)**
 
