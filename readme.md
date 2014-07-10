@@ -1,6 +1,31 @@
-### Use 3VOT to build top of the line Javascript Apps & Systems ###
+### 3VOT is an innovation on how we build Apps using Javascript
 
-There is a new line of apps on the web, they are quick. No Click and Wait. When you click on their buttons the page does not refresh, it responds instantly.
+There is a new generation of Apps that are amazing, reactive, beautifull and with 3VOT posible. Give it a try and learn how simple it is to build modern Javascript Applications the modular, profesional way.
+
+
+* A Command Line Tool to build profesional Javascript Apps
+* A Cloud Infrastructure to publish Apps and scale them to over a hundread millions of users
+* The technology to build Enterprise Apps with Javascript in a Modular, maintanable way.
+* The channel to reuse over 80,000 JS Libs and hundreds of Third Party Services.
+
+**3VOT is Open** as a developer you can use the CLI for free to build robust JS Apps, you are free to choose your favorite framework, patterns and tools.
+
+**3VOT is an automated Production Line of Apps**, organizations can use it to automate the production of apps. Just like a production line of cars, 3VOT has robots that improve manual processes and let's your org reach farther.
+
+3VOT will make you 10x Faster and 100X Happier, or we'll refund your time
+
+## Installation
+```
+npm install 3vot-cli -g
+```
+
+### Documentation
+**[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+
+**[Documentation](https://github.com/3vot/3vot-cli/wiki/Documentation)**
+
+**[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
+
 
 ###History###
 Back in the day web apps where build by an application server (php, nodejs, .net, rails) passed trought the server and page needed to be refreshed. 
@@ -21,13 +46,6 @@ This opens up a world of opportunities, because we have innovated a way to build
 
 ###Mission###
 We build 3VOT looking to provide developers with a great experience, build and deployment actions are automated by one line command executed from the command-line with 3VOT-CLI and then published to 3VOT's Cloud.
-
-### Learning Resources
-**[5 minute getting started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
-
-**[Documentation](https://github.com/3vot/3vot-cli/wiki/Documentation)**
-
-**[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
 
 
 ##The Long Description##
