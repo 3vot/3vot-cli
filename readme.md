@@ -37,7 +37,16 @@ npm install 3vot-cli -g
 ### Examples and Demos
 **What can developers build with 3VOT:** Everything that's browser based and more!
 
-TODO[Add Examples]
+Javascript Apps: Maintanable and Reusable Single Page Applications
+
+EXAMPLES && DEMOS COMMING SOON
+
+* Javascript Apps: Maintanable and Reusable Single Page Applications
+* A/B Testing: Build Web Components, embedded them in your apps. The simplest way to A/B test.
+* Data Visualizations: Build interative Apps to explore complex information interatively.
+* Google Doc Driven Apps: Keep Data in Google Spreasheet and use it in your app.
+* Content Driven Apps: Build amazing Web Stories while allowing users add/edit text,images, videos in GDocs.
+
 
 ###History###
 Frontend Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed. 
