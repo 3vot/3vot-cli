@@ -93,7 +93,7 @@ Onbording new developers is simple, no enviroment to setup, everything is standa
 
 
 ## Use & Support  ##
-All 3VOT Solutions are Open Source and should be used to progress. Check out [Store](3vot.com/3vot/store) [Directory](3vot.com/3vot/directory) [Blog](3vot.com/blog)
+All 3VOT Solutions are Open Source and should be used to progress. 
 
 3VOT is also being used commercially by several organizations like Fusion.net & Rodco S.A.
 
