@@ -78,7 +78,8 @@ function template(app_name){
   promptOrResult(app_name, onResult, prompts )
 }
 
-function publish(app_name){
+function publish(app_name, ignoreSource){
+  if(!ignoreSource) ignoreSource = false;
 
   var prompts = [ 
     { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } 
@@ -92,6 +93,7 @@ function publish(app_name){
       transformToProduction(result)
     }
     
+    if(ignoreSource != false) result.uploadSource = false;
     Upload(Packs._3vot(result))
     .then( function(){ 
       Log.info("App Available at: http://" + result.paths.productionBucket + "/" + result.user_name + "/" + result.app_name )
@@ -104,8 +106,8 @@ function publish(app_name){
   promptOrResult(app_name, onResult, prompts )
 }
 
-function upload(app_name){
-  
+function upload(app_name, ignoreSource){
+  if(!ignoreSource) ignoreSource = false;
   function onResult(err, result) {
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
@@ -113,6 +115,7 @@ function upload(app_name){
       transformToProduction(result,tempvars)
     }
     
+    if(ignoreSource != false) result.uploadSource = false;
     Upload(Packs._3vot(result))
     .then( function(app){ 
       Log.info("App Available at: http://" + result.paths.productionBucket + "/" + result.user_name + "/" + result.app_name +  "_" + app.version )

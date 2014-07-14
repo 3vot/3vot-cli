@@ -55,8 +55,6 @@ else if( argv.h ){
     "",
     "  setup                  Builds the project folder and installs all dependencies",
     "",
-    "  create                 Creates a new javascript app",
-    "",
     "  download               Downloads a starting point App",
     "",
     "  server                 Starts a development server",
@@ -71,6 +69,8 @@ else if( argv.h ){
     "Utilities:",
     "",
     "--app appname            Used as an alternative to typing App Name in a prompt.",
+    "",
+    "--ignoreSource           Does not upload the source code during upload",
     "",
     " -d                      Runs the specified command in debug mode, showing all console outputs",
     "",
@@ -89,13 +89,11 @@ else{
 
   else if( argv._.indexOf("register") > -1 ){ Profile.create(); }
 
-  else if( argv._.indexOf("create") > -1 ){ App.template( argv.app ); }
-
-  else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app ); }
-
   else if( argv._.indexOf("download") > -1 ){ App.download( argv.app ); }
 
-  else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app ); }
+  else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app, argv.ignoreSource ); }
+
+  else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app, argv.ignoreSource ); }
 
   else if( argv._.indexOf("build") > -1 ){ App.build( argv.app ); }
 

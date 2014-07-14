@@ -24,7 +24,7 @@
     "mime": "~1.2.11",
     "express": "~3.4.8",
     "prompt": "~0.2.12",
-    "rimraf": "~2.2.6",
+    "rimraf": "~2.2.8",
     "eco": "~1.1.0-rc-3",
     "superagent": "~0.16.0",
     "coffeeify": "~0.5.2",
@@ -35,7 +35,7 @@
     "mkpath": "~0.1.0",
     "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.33",
+    "3vot-cloud": "0.0.34",
     "3vot": "~0.1.4"
   },
   "testDependencies": {

@@ -58,13 +58,18 @@ Server.startServer = function(){
     res.send(fileBody);
   });
 
-  app.get("/:app_name/assets/:asset", function(req, res) {
+  app.get("/:app_name/assets/*", function(req, res) {
     var asset = req.params.asset;
     var app_name = req.params.app_name;
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", asset );
-    var fileBody = Transform.readByType(filePath, "local", {app_name: app_name});
-    res.set('Content-Type', mime.lookup(filePath));
-    res.send(fileBody);
+    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", req.params[0] );
+
+    fs.stat(filePath, function(err,stats){
+      if(err) return res.send(404);
+      var fileBody = Transform.readByType(filePath, "local", {app_name: app_name});
+      //fileBody = transformHook(app_name, fileBody, req.params[0])
+      res.set('Content-Type', mime.lookup(filePath));
+      res.send(fileBody);
+    });
   });
 
   app.get("/:app_name", function(req, res) {
@@ -89,6 +94,7 @@ function middleware(app_name,req, res) {
   .then(clearAppFolder)
   .then(preHook)
   .then(function(){ return buildApp(app_name); })
+  .then( postHook )
   .then(function(){
     var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
     var fileBody = Transform.readByType(filePath, "local", { app_name: app_name });
@@ -143,6 +149,23 @@ function buildApp(app_name){
   return deferred.promise;
 };
 
+function transformHook(app_name, body, file){
+
+    try{
+      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"transform.js" );
+
+
+      if( fs.existsSync(prePath) ){
+        return require(prePath)(body,file);
+      }
+      else return body;
+
+    }catch(err){ 
+      Log.debug(err,"server",164)
+      return body;
+    }
+    return body;
+}
 
 function preHook(app_name){
   var deferred = Q.defer();
@@ -161,6 +184,34 @@ function preHook(app_name){
             Log.debug(error, "server:146");
           }
           Log.debug(stdout, "server:146");
+          return deferred.resolve(app_name)
+        });
+      }
+      else  return deferred.resolve(app_name)
+
+    }catch(err){ return deferred.resolve(app_name) }
+
+    return deferred.promise;
+}
+
+
+function postHook(app_name){
+  var deferred = Q.defer();
+
+    try{
+      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"post.js" );
+
+      if( fs.existsSync(prePath) ){
+
+        var exec = require('child_process').exec,child;
+
+        child = exec('node ' + prePath,
+        function (error, stdout, stderr) {
+
+          if (error !== null){
+            Log.debug(error, "server:194");
+          }
+          Log.debug(stdout, "server:196");
           return deferred.resolve(app_name)
         });
       }
