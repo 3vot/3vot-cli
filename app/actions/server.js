@@ -47,31 +47,6 @@ Server.startServer = function(){
     res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ <a href='http://localhost:3000/APP_NAME'>http://localhost:3000/APP_NAME</a></h2>");
   });
 
-  app.get("/:app_name/:file", function(req, res) {
-    var asset = req.params.asset;
-    var app_name = req.params.app_name;
-    var file = req.params.file;
-    
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", file );
-    var fileBody = Transform.readByType(filePath, "local", {app_name: app_name} );
-    res.set('Content-Type', mime.lookup(filePath));
-    res.send(fileBody);
-  });
-
-  app.get("/:app_name/assets/*", function(req, res) {
-    var asset = req.params.asset;
-    var app_name = req.params.app_name;
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "assets", req.params[0] );
-
-    fs.stat(filePath, function(err,stats){
-      if(err) return res.send(404);
-      var fileBody = Transform.readByType(filePath, "local", {app_name: app_name});
-      //fileBody = transformHook(app_name, fileBody, req.params[0])
-      res.set('Content-Type', mime.lookup(filePath));
-      res.send(fileBody);
-    });
-  });
-
   app.get("/:app_name", function(req, res) {
     var app_name = req.params.app_name
     res.redirect("/" + app_name + "/")
@@ -83,6 +58,19 @@ Server.startServer = function(){
     middleware(app_name,req,res)
   });
 
+  app.get("/:app_name/*", function(req, res) {
+    var app_name = req.params.app_name;
+    var file = req.params[0];
+    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", file );
+    fs.stat(filePath, function(err,stats){
+      if(err) return res.send(404);
+      if(!stats.isFile()) return res.send(404);
+      var fileBody = Transform.readByType(filePath, "local", {app_name: app_name} )
+      res.set('Content-Type', mime.lookup(filePath));
+      res.send(fileBody);
+    });
+  });
+
   http.createServer(app).listen(app.get('port'), function(){
     console.info('3VOT Server running at: http://' + Server.domain );
   });
@@ -91,7 +79,6 @@ Server.startServer = function(){
 
 function middleware(app_name,req, res) {
   checkApp(app_name)
-  .then(clearAppFolder)
   .then(preHook)
   .then(function(){ return buildApp(app_name); })
   .then( postHook )
@@ -120,17 +107,6 @@ function checkApp(app_name){
   return deferred.promise; 
 }
 
-function clearAppFolder(app_name){
-  var deferred = Q.defer();
-  var path = Path.join( process.cwd(), 'apps', app_name, 'app' );
-  rimraf(path, function(err){
-    fs.mkdirSync(path);
-    fs.mkdirSync( Path.join(path,"assets") );
-    return deferred.resolve(app_name);
-  })
-
-  return deferred.promise;
-}
 
 function buildApp(app_name){
   var deferred = Q.defer();

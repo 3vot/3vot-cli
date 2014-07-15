@@ -5,6 +5,8 @@ var placeholder = "{3vot}"
 var local = "//localhost:3000";
 var production = "//3vot.com"
 
+var Q = require("q")
+
 var Transform = { local: toLocal, production: toProduction, fromS3: fromS3 }
 
 function fromS3(body){
@@ -35,6 +37,7 @@ function readByType(path, transform, transformOptions){
   else body = fs.readFileSync(path)
   return body;
 }
+
 
 module.exports = {
 	toLocal: toLocal,

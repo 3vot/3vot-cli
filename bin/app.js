@@ -40,7 +40,6 @@ function download(app_name){
     Download(Packs._3vot(result))
     .then( function(){ Log.info("OK. The App was downloaded. To preview locally type: 3vot server "); } )
     .then( function(){ 
-      transformFromProduction(result);
       return Stats.track("app:download", result ) 
     })
     .then(function(){ process.exit() })
@@ -171,29 +170,6 @@ function transformToProduction( result, tempvars ){
 }
 
 
-function transformFromProduction( result ){
-  var apps = WalkDir( Path.join( process.cwd(), "apps", result.app_name, "app" ) );
-
-  /*
-  apps.forEach( function(path){
-    var body = Transform.readByType(path.path, "fromS3", {} )
-    fs.writeFileSync(path.path,body);
-  });
-
-  
-  var indexPath = Path.join( process.cwd(), "apps", result.app_name , "index.html" );
-  try{
-    fs.readFileSync( indexPath )
-  }catch(err){
-    var template = fs.readFileSync( Path.join( __filename , "..","..", "templates", "html.eco" ) ) 
-    result.serverTag = "{3vot}";
-    var index = eco.render(template, result)
-    fs.writeFileSync(indexPath, index);
-  }
-  */
-  return true;
-}
-
 module.exports = {
   upload: upload,
   download: download,
@@ -203,21 +179,4 @@ module.exports = {
   template: template
 }
 
-
-function publishOld(app_name){
-  var prompts = [ 
-    { name: 'app_version', description: 'Version: ( The Version of the App you want to publish, enter for latest )' } ]
-
-  function onResult(err, result) {
-      Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
-
-      
-      Publish(Packs._3vot(result))
-      .then( function(){ Log.info("OK. The App was published"); } )
-      .then( function(){ return Stats.track("app:publish", result ) } )
-      .then(function(){ process.exit() })
-      .fail( function(err){ Log.error(err, "./prompt/app",96 ); });
-  };
-
-  promptOrResult(app_name, onResult, prompts )
-}
+ 

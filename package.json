@@ -35,7 +35,7 @@
     "mkpath": "~0.1.0",
     "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.34",
+    "3vot-cloud": "0.0.38",
     "3vot": "~0.1.4"
   },
   "testDependencies": {
