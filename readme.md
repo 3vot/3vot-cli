@@ -1,4 +1,10 @@
-### 3VOT is an innovation on how we build Apps using Javascript
+### 3VOT is a full production line for modern JS Apps, it includes:
+- JS Framework
+- Command Line Interface
+- Publishing Cloud
+- Backend DB (comming soon!)
+
+### It is an innovation on how we build Apps using Javascript
 
 There is a new generation of Apps that are amazing, reactive, beautifull and with 3VOT posible. Give it a try and learn how simple it is to build modern Javascript Applications the modular, serverless, profesional way.
 
@@ -39,14 +45,13 @@ npm install 3vot-cli -g
 ### Examples and Demos
 **What can developers build with 3VOT:** Everything that's browser based and more!
 
-EXAMPLES && DEMOS COMMING SOON
-
 * Javascript Apps: Maintanable and Reusable Single Page Applications
 * A/B Testing: Build Web Components, embedded them in your apps. The simplest way to A/B test.
 * Data Visualizations: Build interative Apps to explore complex information interatively.
 * Google Doc Driven Apps: Keep Data in Google Spreasheet and use it in your app.
 * Content Driven Apps: Build amazing Web Stories while allowing users add/edit text,images, videos in GDocs.
 
+EXAMPLES && DEMOS COMMING SOON
 
 ###History###
 Frontend Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed. 
@@ -99,7 +104,7 @@ All 3VOT Solutions are Open Source and should be used to progress.
 
 3VOT is an ISV Partner of Salesforce.com where CLI is published as CLAY in App Exchange as an Enterprise Solution.
 
-For both cases we provide profesional remote and on-site support, custom develpment and training at an agreed hourly rate **contact us at support@3vot.com**
+For both cases we provide profesional remote and on-site support, custom develpment and training at an agreed hourly rate **contact us at one@3vot.com**
 
 ## LICENSE ##
 MIT 
