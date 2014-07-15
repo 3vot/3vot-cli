@@ -1,9 +1,9 @@
 ### 3VOT is a full production line for (100% browser based) JS Apps  
 ####It includes:
-- JS Framework
-- Command Line Interface
-- Publishing Cloud
-- Backend DB (comming soon!)
+- a JS Framework
+- a Command Line Interface
+- a Publishing Cloud
+- a Backend DB (comming soon!)
 
 ### It is an innovation on how we build Apps using Javascript
 
