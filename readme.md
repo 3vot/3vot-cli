@@ -1,4 +1,4 @@
-### 3VOT is a full production line for modern JS Apps, it includes:
+### 3VOT is a full production line for (100% browser based) JS Apps, it includes:
 - JS Framework
 - Command Line Interface
 - Publishing Cloud
