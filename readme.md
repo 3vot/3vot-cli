@@ -12,7 +12,20 @@ With 3VOT junior developers can build SPApps with their favorite frameworks, whi
 
 > We sit down and think how things should be, then we bend reality and hack until reality becomes our vision
 
-### With 3VOT you can build standard HTML/JS Apps in your prefared way ###
+## Installation
+```
+npm install 3vot-cli -g
+```
+
+## Documentation
+We have created a Wiki with explanations, examples and documentation, visit it to learn more.
+
+**[Documentation](https://github.com/3vot/3vot-cli/wiki)**
+
+
+## What can developers do with 3VOT? ##
+
+### Build standard HTML/JS Apps in your prefared way ###
 Build Apps using standard technologies, with your favorite frameworks, pre-procesors and automation tools. 3VOT does not impose any structure or preference, it does however offer many tools and helpers you can opt-in to use.
 
 ### Upload Apps to the Static Cloud ###
@@ -59,34 +72,32 @@ It's called 3VOT Multiplatform, and it works just like that.
 
 ### 3VOT will make you 10x Faster and 100X Happier ###
 
-## Installation
-```
-npm install 3vot-cli -g
-```
+## What can organizations do with 3VOT? ##
 
-### Documentation
-**[5 minute Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+## Build Interative App Components ##
+Using 3VOT embendable technology you can build a component, a part, and publish it inside you tradional app, cms, blog or web site. 
 
-**[Documentation](https://github.com/3vot/3vot-cli/wiki/Documentation)**
+Most organzations struggle to get the bleeding edge technology into their current stack, but with 3VOT it's possible. Simply build an amazing app component, and embeed it a specific part of your app.
 
-**[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
+## A/B Testing ##
+3VOT is great for A/B Testing because you can build an App and upload it, that's version 4. Make a change to the app to test your hypotesis and upload it, that's version 5. 
 
-**[Embedded Apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps)**
+When you publish an App 3VOT gives you a unique link, you can choose which version of the app you publish to that link. So publish version 4 for a couple of hours, then switch to version 5. Check you analytics and you'll have your answer.
 
-### Examples and Demos
-**What can developers build with 3VOT:** Everything that's browser based and more!
+What's powerfull about this is that you can build an App Component and A/B Tested it in your full-fledged App, for some organizations this is way quicker than changing their full sites. 
 
-* Javascript Apps: Maintanable and Reusable Single Page Applications
-* A/B Testing: Build Web Components, embedded them in your apps. The simplest way to A/B test.
-* Data Visualizations: Build interative Apps to explore complex information interatively.
-* Google Doc Driven Apps: Keep Data in Google Spreasheet and use it in your app.
-* Content Driven Apps: Build amazing Web Stories while allowing users add/edit text,images, videos in GDocs.
 
-EXAMPLES && DEMOS COMMING SOON
+## History & Architecture ##
+Browser Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed to show the response.
 
+Modern frontend apps are called Single Page Applications. Think Facebook, where the page does not refresh when you Like, Share or scroll to get more content.
+
+Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it happens instantly. 
+
+**Remember Single Page Apps are not the future, they are the present**
 
 ## Use & Support  ##
-All 3VOT Solutions are Open Source and should be used to progress. 
+All 3VOT Solutions are Open Source 
 
 3VOT is also being used commercially by several organizations like Fusion.net & Rodco S.A.
 
