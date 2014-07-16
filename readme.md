@@ -22,7 +22,7 @@ How do you scale your app for a spike, or make sure that server will run forever
 Why publish a static JS App to a server? Heroku, Digital Ocean, etc; Those are for dynamic client-server apps. 3VOT has the only cloud for Frontend Static Apps. It will scale for 10 or 10 million users, it's super affordable and it takes only one command ```3vot publish```
 
 #### Deploy or Embeed an App 
-Building a state of art SPApp and deplying it via an iFrame is like watching a blue ray movie on your grandfathers' old TV Box. With 3VOT you can insert a <script src="MY_3VOT_APP"> tag anywhere on the web, and the app will render itself there.
+Building a state of art SPApp and deplying it via an iFrame is like watching a blue ray movie on your grandfather's old TV Box. With 3VOT you can insert a <script src="MY_3VOT_APP"> tag anywhere on the web, and the app will render itself there.
 
 #### Clone an App
 So you built an amazing app, and now you want to build a similar one. With 3VOT all you need to do is ```3vot download``` an app from our public repo or your private one.
