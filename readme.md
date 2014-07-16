@@ -4,7 +4,7 @@ Browser Apps are the cool apps that require no page refresh, exists only in the 
 With 3VOT junior developers can build SPApps with their favorite frameworks, while advanced developers can write their own using modular code. It is 100% Open, does not impose anything and GOYW (gets out of your way)
 
 ## It includes:
-- Modular Development Enviroment
+- Modular Javascript Enviroment ( aka NODEJS in the Browser )
 - Command Line Interface
 - Static Cloud
 - App Repository
