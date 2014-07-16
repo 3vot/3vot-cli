@@ -1,13 +1,16 @@
 ### 3VOT is a full production line for (100% browser based) JS Apps  
+Browser Apps are the cool apps that require no page refresh, exists only in the browser, no server, no click an wait. Also known as Single Page Apps and made famous by Facebook & Twitter. 
+
+With 3VOT junior developers can build this apps with their favorite frameworks, while advanced developers can write their own with modular code.
+
 ####It includes:
-- a JS Framework
+- a Development Enviroment to write with Modular Code
 - a Command Line Interface
-- a Publishing Cloud
-- a Backend DB (comming soon!)
+- a Cloud to host Apps
+- an App Gallery to download examples
+- a Backend DB(comming soon!)
 
-### It is an innovation on how we build Apps using Javascript
-
-There is a new generation of Apps that are amazing, reactive, beautifull and with 3VOT posible. Give it a try and learn how simple it is to build modern Javascript Applications the modular, serverless, profesional way.
+> There is a new generation of Apps that are amazing, reactive, beautifull and with 3VOT posible. Give it a try and learn how simple it is to build modern Javascript Applications the modular, serverless, profesional way.
 
 
 * 3VOT is a platform to **build Single Page Apps**, apps without page refresh, no click a wait!
