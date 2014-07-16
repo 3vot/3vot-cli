@@ -70,16 +70,14 @@ It's called 3VOT Multiplatform, and it works just like that.
 3VOT removes the neccesity, costs and complications of using servers to host static HTML/JS Apps; With 3VOT you build apps that can be deployed anywhere as links and files, no servers. 
 
 
-#### 3VOT will make you 10x Faster and 100X Happier ###
-
 ## What can organizations do with 3VOT? ##
 
-## Build Interative App Components
+##Build Interative App Components
 Using 3VOT embendable technology you can build a component, a part, and publish it inside you tradional app, cms, blog or web site. 
 
 Most organzations struggle to get the bleeding edge technology into their current stack, but with 3VOT it's possible. Simply build an amazing app component, and embeed it a specific part of your app.
 
-## A/B Testing
+##A/B Testing
 3VOT is great for A/B Testing because you can build an App and upload it, that's version 4. Make a change to the app to test your hypotesis and upload it, that's version 5. 
 
 When you publish an App 3VOT gives you a unique link, you can choose which version of the app you publish to that link. So publish version 4 for a couple of hours, then switch to version 5. Check you analytics and you'll have your answer.
