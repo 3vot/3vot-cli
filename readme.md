@@ -13,43 +13,43 @@ With 3VOT junior developers can build SPApps with their favorite frameworks, whi
 > We sit down and think how things should be, then we bend reality and hack until reality becomes our vision
 
 ### With 3VOT you can build standard HTML/JS Apps in your prefared way ###
-Build Apps using standard technologies, with your favorite frameworks, pre-procesors and automation tools.
+Build Apps using standard technologies, with your favorite frameworks, pre-procesors and automation tools. 3VOT does not impose any structure or preference, it does however offer many tools and helpers you can opt-in to use.
 
-### Upload Apps to the Static Cloud###
-Where and how long does it take to publish an app to the web or roll back to a previus version. How do you preview one version to your team or customers? <br/>
+### Upload Apps to the Static Cloud ###
+Where and how long does it take to publish an app to the web or roll back to a previus version? How do you preview one version to your team or customers? Will it pass the test of time? <br/>
 
-With 3VOT with each time you do ```3vot upload```, you'll upload a new version of the app and get a link to share with anyone. Nothing to think about, it just works.
-
-### Publish Apps to the Static Cloud###
-How do you scale your app for a spike, or make sure that server will run forever. Cache, DNS, CDN?
+With 3VOT with each time you do ```3vot upload```, you'll compile and upload a new version of the app and get a link to share with anyone. Nothing to think about, nothing to remember, nothing to configure, it just works.
+ 
+### Publish Apps to the Static Cloud ###
+How do you scale your app for a spike, or make sure that server will run forever. What about cache, DNS, CDN?
 
 **Why publish a static JS App to a server? Heroku, Digital Ocean, etc; Those are for dynamic client-server apps.**
 
-3VOT has the only cloud for Frontend Static Apps. It will scale for 10 to 10 million users, it's super affordable and it needs only one command ```3vot publish```. 3VOT provides your with a link, that will always be your production app and you'll be able to select what  version of your app is live.
+3VOT has the only cloud for Frontend Apps. It will scale from 10 to 10 million users automatically, it's super affordable and it needs only one command ```3vot publish```. 3VOT provides your with a link, that will always be your production link , from there one you'll be able to select what version of your app is live.
 
 ### Deploy or Embeed an App ###
-Building a state of the art SPApp and deploying it via an iFrame is like watching a blue ray movie on your grandfather's old TV Box. <br/>
+Building a state of the art SPApp and deploying it via an iFrame is like watching a blue ray movie on your grandfather's old TV Set. <br/>
 
-With 3VOT you can insert a ```<scrpt src="MY_3VOT_APP">``` tag anywhere on the web, and the app will render itself there.
+With 3VOT you can insert a ```<scrpt src="MY_3VOT_APP">``` tag anywhere on the web, and the app will render itself there. We use it in Blogs, Static Pages, Web Apps (php/rails,etc) and CMS's;
 
 ### Clone an App###
 So you built an amazing app, and now you want to build a similar one. With 3VOT all you need to do is ```3vot download``` an app from our public repo or your private one.
 
-This is how many organizations share examples apps and tutorials, one command and you got the app ready to run.
+This is how many organizations share examples apps and tutorials, one command and you got the app ready to run. This is also the recomended way to learn 3VOT and onboard developers.
 
-Large organizations or Agencies setup templates and base projects for training, standarization, mantainability. In short to power their 3VOT Production-Line of apps.
+Large organizations or Agencies setup templates and base projects for training, standarization and mantainability. In short to power their 3VOT Production-Line of apps.
 
 ### Write browser javascript the NODEJS Way###
 Being able to require("fs") dependencies and separate javascript code in modules is a revolution. 3VOT brings this revolution to the browser allowing developers to write modular code out of the box.
 
-3VOT empowers you to build resusable components in plain javascript, separate your code in files and folders.
+3VOT empowers you to build re-usable components in plain javascript, separate your code in files and folders.
 
 This opens up the door to writting enterprise large scale apps, real unit testing becomes posible and applying OOP Principles a reality.
 
 ### Write Multidevice Apps - The multi device problem###
-Responsive and mobile-first design tells us we can build an app that adapts to the screen size of the user's device. The alternative approach to build a separate app for each device.
+Responsive and mobile-first design tells us we can build an app that adapts to the screen size of the user's device. The alternative approach is to build a separate app for each device.
 
-In 3VOT we imagine how things should be... We should be able to write a code base in components, and then choose what components are loaded depending on the user's device.
+In 3VOT we imagine how things should be... We should be able to write our code in modules, and then choose what modules are loaded depending on the user's device.
 
 It's called 3VOT Multiplatform, and it works just like that.
 
