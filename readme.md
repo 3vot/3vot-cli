@@ -12,6 +12,7 @@ With 3VOT junior developers can build SPApps with their favorite frameworks, whi
 
 > We sit down and think how things should be, then we bend reality and hack until reality becomes our vision
 
+
 ## Installation
 ```
 npm install 3vot-cli -g
@@ -20,7 +21,9 @@ npm install 3vot-cli -g
 ## Documentation
 We have created a Wiki with explanations, examples and documentation, visit it to learn more.
 
-**[Documentation](https://github.com/3vot/3vot-cli/wiki)**
+**[3VOT Docs & Wiki](https://github.com/3vot/3vot-cli/wiki)**
+
+#### 3VOT will make you 10x Faster and 100X Happier
 
 
 ## What can developers do with 3VOT? ##
