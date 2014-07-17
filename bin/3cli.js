@@ -91,6 +91,8 @@ else{
 
   else if( argv._.indexOf("download") > -1 ){ App.download( argv.app ); }
 
+  else if( argv._.indexOf("create") > -1 ){ App.template("blank"); }
+
   else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app, argv.ignoreSource ); }
 
   else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app, argv.ignoreSource ); }

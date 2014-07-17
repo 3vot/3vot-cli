@@ -50,20 +50,11 @@ function download(app_name){
 }
 
 function template(app_name){
-   var prompts = [ ];
-  if(!app_name){
-    prompts = [ { name: 'app_new_name', description: 'Name: ( What you want to name your app ) *enter for same' } ];
-    app_name = "multi_platform";
-  }
-  else{
-    prompts = [ 
-      { name: 'app_new_name', description: 'Name: ( What you want to name your app ) *enter for same' },
-      { name: 'app_version', description: 'Version: ( The App version, hit enter for latest )' }
-    ]
-  }
-
+  var prompts = [ { name: 'app_new_name', description: 'Name: ( The name of your app )' } ];
+  
   function onResult(err, result) {
-      result.app_user_name = "template"
+      result.app_user_name = "start"
+      result.app_name = "blank";
 
       Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
 
