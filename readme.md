@@ -37,19 +37,20 @@ We have created a Wiki with explanations, examples and documentation, visit it t
 #### 3VOT will make you 10x Faster and 100X Happier
 
 
-### 3VOT is a full production line for (100% browser based) JS Apps  
+## About Browser Aps ##
+
 Browser Apps are the cool apps that require no page refresh, exists only in the browser, no server, no click an wait. Also known as Single Page Apps (SPApps) and made famous by Facebook & Twitter. 
+
+Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed to show the response.
+
+Browser Apps also called Single Page Applications. Think Facebook, where the page does not refresh when you Like, Share or scroll to get more content.
+
+Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it happens instantly. 
+
 
 With 3VOT junior developers can build SPApps with their favorite frameworks, while advanced developers can write their own using modular code. It is 100% Open, does not impose anything and GOYW (gets out of your way)
 
 
-
-## History & Architecture ##
-Browser Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed to show the response.
-
-Modern frontend apps are called Single Page Applications. Think Facebook, where the page does not refresh when you Like, Share or scroll to get more content.
-
-Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it happens instantly. 
 
 **Remember Single Page Apps are not the future, they are the present**
 
