@@ -11,10 +11,11 @@
 ## Features
 
 ###Upload your apps to the internet
-Upload anything from PDF's and Movies to HTML. Angular Apps, Backbone, Bootstrap, Yeoman, Grunt/Gulp. 
+Upload anything from PDF's, and simple HTML to Angular, Backbone, Bootstrap, from Yeoman, from Grunt/Gulp. Build it your way, publish profesionally.
 
 ###3VOT Cloud
-HTML, CSS and JS is static. **We do not need an Server**. 3VOT is the Cloud for the Frontend, apps that live foreever, always available and auto-scalable to millions of visits per seconds. Cache, CDN, DNS all working out-of-the-box.
+HTML, CSS and JS is static. **We do not need an Server**. 3VOT is the Cloud for the Frontend, make your app invinsible with one simple command. Learn More about 3VOT Cloud
+
 
 ###Modular Build System
 There's a better way to write javascript, 3VOT empowers you to build better and more maintenable apps, writting less code and using any NPM Package. Learn more here:
