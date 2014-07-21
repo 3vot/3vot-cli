@@ -49,12 +49,14 @@ Server.startServer = function(){
   });
 
   app.get("/*", function(req, res) {
-    var app_name = req.params.app_name;
     var options = Packs.package({},false);
     var file = req.params[0];
 
     var filePath = Path.join(  process.cwd(), options.threevot.distFolder, file );
+
     fs.stat(filePath, function(err,stats){
+      console.log(err)
+
       if(err) return res.send(404);
       if(!stats.isFile()) return res.send(404);
       var fileBody = Transform.readByType(filePath, "local", {} )
@@ -91,11 +93,11 @@ function middleware(req, res) {
 
 function buildApp(options){
   var deferred = Q.defer();
-  Log.debug(options.promptValues.app_name,"server",132)
+  Log.debug(options.package.name,"server",95)
 
   AppBuild( options )
   .then( function(){
-    return deferred.resolve(options.promptValues.app_name);
+    return deferred.resolve(options.package.name);
   })
   .fail( function(err){ 
     return deferred.reject(err);
@@ -126,8 +128,8 @@ function preHook(){
 
     var prePath = Path.join(  process.cwd(), "hooks" ,"pre.js" );
 
-    fs.exists(prePath, function(err){
-      if(err) return deferred.resolve()
+    fs.exists(prePath, function(err, exists){
+      if(err || !exists) return deferred.resolve()
 
       var exec = require('child_process').exec,child;
 

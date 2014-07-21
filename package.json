@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "node ./tests/integration.js",
-    "postinstall": "node ./bin/postInstall.js"
+    "postinstall": ""
   },
   "author": "",
   "license": "BSD",
@@ -36,7 +36,7 @@
     "mkpath": "~0.1.0",
     "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.41",
+    "3vot-cloud": "0.0.42",
     "3vot": "~0.1.4"
   },
   "testDependencies": {
