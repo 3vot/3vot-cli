@@ -1,7 +1,7 @@
 ### 3VOT is like Heroku for Javascript Apps
 for anything you want to publish to the web
 
-> 3VOT is a profesional web publishing platform, this is the CLI it helps you upload and build if you want.
+> 3VOT is a profesional web publishing platform, this Smart CLI uploads assets and apps.
 
 * For everybody 3VOT is the way to publish docs, images and pages to the internet.
 * Developers publish their Apps with automatic support for millions of users. ( Static, Browser, Single Page )
