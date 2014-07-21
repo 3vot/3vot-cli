@@ -13,11 +13,11 @@
 ###Upload your apps to the internet
 Upload anything from PDF's and Movies to HTML. Angular Apps, Backbone, Bootstrap, Yeoman, Grunt/Gulp. 
 
-###Modular Build System
-There's a better way to write javascript, 3VOT empowers you to build modularly taking using any NPM Package.
-
 ###3VOT Cloud
-HTML, Javascript, Static Single Page Apps do not need an Server. 3VOT is the Cloud for the Frontend.
+HTML, CSS and JS is static. **We do not need an Server**. 3VOT is the Cloud for the Frontend, apps that live foreever, always available and auto-scalable to millions of visits per seconds. Cache, CDN, DNS all working out-of-the-box.
+
+###Modular Build System
+There's a better way to write javascript, 3VOT empowers you to build better and more maintenable apps, writting less code and using any NPM Package. Learn more here:
 
 > We sit down and think how things should be, then we bend reality and hack until reality becomes our vision
 
@@ -25,13 +25,6 @@ HTML, Javascript, Static Single Page Apps do not need an Server. 3VOT is the Clo
 ```
 npm install 3vot-cli -g
 ```
-
-### 3VOT is a full production line for (100% browser based) JS Apps  
-Browser Apps are the cool apps that require no page refresh, exists only in the browser, no server, no click an wait. Also known as Single Page Apps (SPApps) and made famous by Facebook & Twitter. 
-
-With 3VOT junior developers can build SPApps with their favorite frameworks, while advanced developers can write their own using modular code. It is 100% Open, does not impose anything and GOYW (gets out of your way)
-
-
 
 ## Documentation
 We have created a Wiki with explanations, examples and documentation, visit it to learn more.
@@ -41,6 +34,10 @@ We have created a Wiki with explanations, examples and documentation, visit it t
 #### 3VOT will make you 10x Faster and 100X Happier
 
 
+### 3VOT is a full production line for (100% browser based) JS Apps  
+Browser Apps are the cool apps that require no page refresh, exists only in the browser, no server, no click an wait. Also known as Single Page Apps (SPApps) and made famous by Facebook & Twitter. 
+
+With 3VOT junior developers can build SPApps with their favorite frameworks, while advanced developers can write their own using modular code. It is 100% Open, does not impose anything and GOYW (gets out of your way)
 
 
 
