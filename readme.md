@@ -1,6 +1,6 @@
 ### 3VOT is like Heroku for Javascript Apps
 
-> 3VOT is a profesional web publishing platform, this Smart CLI uploads assets and apps.
+> 3VOT is a profesional web publishing platform, for everybody to publish to the internet via 3VOT cloud.
 
 * For everybody 3VOT is the way to publish docs, images and pages to the internet.
 * Developers publish their Apps with automatic support for millions of users. ( Static, Browser, Single Page )
@@ -11,13 +11,12 @@
 ## Features
 
 ###Upload your apps to the internet
-Upload anything from PDF's, and simple HTML to Angular, Backbone, Bootstrap, from Yeoman, from Grunt/Gulp. <br/> **Build your way** and publish profesionally.
+Upload anything from simple HTML Page to Javascript Apps in Angular, Backbone, Bootstrap, Yeoman, Grunt/Gulp. <br/> **Build your way** and don't worry about servers, publish profesionally.
 
 > 3VOT can also share a few tricks like [multi-platform apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps), [embeddable apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps) and [Web Components]()
 
 ###3VOT Cloud
-HTML, CSS and JS are static. **We do not need an Server**. 3VOT is the Cloud for the Frontend, give your app cloud superpowers with one simple command. [Learn More about 3VOT Cloud]()
-
+HTML, CSS and JS are static. **We do not need a Server**. 3VOT is the Cloud for the Frontend, give your app superpowers with one simple command. High-availability, Infinite Scalability and World Delivery Network  [Learn More about 3VOT Cloud]()
 
 ###Modular Build System
 There's a better way to write javascript, 3VOT empowers you to build better and more maintenable apps, writting less code and using any NPM Package. [Learn more here about Modular Code](https://github.com/3vot/3vot-cli/wiki/Modular-Javascript)
@@ -33,6 +32,8 @@ npm install 3vot-cli -g
 We have created a Wiki with explanations, examples and documentation, visit it to learn more.
 
 **[3VOT Docs & Wiki](https://github.com/3vot/3vot-cli/wiki)**
+* [Create your first App](https://github.com/3vot/3vot-cli/wiki/Getting-Started-with-a-new-App)
+* [Setup 3VOT with your existing App](https://github.com/3vot/3vot-cli/wiki/Getting-Started-with-a-Current-App)
 
 #### 3VOT will make you 10x Faster and 100X Happier
 
