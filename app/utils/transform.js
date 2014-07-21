@@ -7,23 +7,20 @@ var production = "//3vot.com"
 
 var Q = require("q")
 
-var Transform = { local: toLocal, production: toProduction, fromS3: fromS3 }
-
-function fromS3(body){
-	body = _3vot.replaceAll(body, "*/assets", "{3vot}/assets");
-	return body;
-}
+var Transform = { local: toLocal, production: toProduction }
 
 function toLocal( body, transformOptions ){
-	var route = (transformOptions.host || local ) + "/" + transformOptions.app_name;
-
+	var route = local
 	body = _3vot.replaceAll(body, transformOptions.placeholder || placeholder, route);
 	return body;
 }
 
 function toProduction(body, transformOptions){
-	var route = (transformOptions.host || production )+ "/" + transformOptions.user_name + "/" + transformOptions.app_name;
-	if(transformOptions.version) route += "_" + transformOptions.version
+	var route = ""
+	if(transformOptions.package.threevot.domain ) route = transformOptions.package.threevot.domain
+	else route = production + "/" + transformOptions.user.user_name + "/" + transformOptions.package.name;
+	
+	if(!transformOptions.promptValues.production) route += "_" + transformOptions.version
 	body = _3vot.replaceAll(body, transformOptions.placeholder || placeholder, route);
 	return body;
 }
@@ -42,6 +39,5 @@ function readByType(path, transform, transformOptions){
 module.exports = {
 	toLocal: toLocal,
 	toProduction: toProduction,
-	fromS3: fromS3,
 	readByType: readByType
 }

@@ -13,6 +13,7 @@ var App = require("./app")
 var Server = require("../app/actions/server")
 var Log = require("3vot-cloud/utils/log")
 var Stat = require("3vot-cloud/utils/stats")
+var Packs = require("3vot-cloud/utils/stats")
 
 Log.setLevel("INFO")
 
@@ -53,7 +54,9 @@ else if( argv.h ){
     "",
     "  register               Registers to user 3VOT CLI",
     "",
-    "  setup                  Builds the project folder and installs all dependencies",
+    "  users                  List all users, use --add , --remove , --reset",
+    "",
+    "  setup                  Set ups 3VOT in the current folder",
     "",
     "  download               Downloads a starting point App",
     "",
@@ -67,8 +70,6 @@ else if( argv.h ){
     "",
     
     "Utilities:",
-    "",
-    "--app appname            Used as an alternative to typing App Name in a prompt.",
     "",
     "--ignoreSource           Does not upload the source code during upload",
     "",
@@ -87,17 +88,25 @@ else{
   
   if( argv._.indexOf("setup") > -1 ){ Profile.setup(); } 
 
-  else if( argv._.indexOf("register") > -1 ){ Profile.create(); }
+  else if( argv._.indexOf("users") > -1 && argv.reset ){ require("./postInstall") }  
+
+  else if( argv._.indexOf("users") > -1  && argv.add ){ Profile.addUser(); }  
+
+  else if( argv._.indexOf("users") > -1  && argv.remove ){ Profile.removeUser(); }  
+
+  else if( argv._.indexOf("users") > -1 ){ Profile.listUser(); }  
+
+  else if( argv._.indexOf("register") > -1 ){ Profile.register(); }
 
   else if( argv._.indexOf("download") > -1 ){ App.download( argv.app ); }
 
-  else if( argv._.indexOf("create") > -1 ){ App.template("blank"); }
+  else if( argv._.indexOf("create") > -1 ){ App.create("blank"); }
 
   else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app, argv.ignoreSource ); }
 
   else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app, argv.ignoreSource ); }
 
-  else if( argv._.indexOf("build") > -1 ){ App.build( argv.app ); }
+  else if( argv._.indexOf("build") > -1 ){ App.build( argv.app, argv.p ); }
 
   else if( argv._.indexOf("install") > -1 ){ App.install( argv.app ); }
 

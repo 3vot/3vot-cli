@@ -11,6 +11,7 @@ var argv = require('optimist').argv;
 var request = require("superagent")
 var devDomain = null;
 var Transform = require("../utils/transform")
+var extend = require('util')._extend
 
 var mime = require('mime');
 
@@ -18,9 +19,10 @@ var Server = {}
 var Builder = require("3vot-cloud/utils/builder");
 var WalkDir = require("3vot-cloud/utils/walk")
 var AppBuild = require("3vot-cloud/app/build")
+var Packs = require("3vot-cloud/utils/packs")
 var rimraf = require("rimraf")
-
 var Log = require("3vot-cloud/utils/log")
+var User;
 
 module.exports = Server;
 
@@ -32,9 +34,7 @@ Server.prompt =  function( isNitrous ){
 
 Server.startServer = function(){
   var app = express();    
-  var pck = require( Path.join( process.cwd(), "3vot.json" )  );
-  var profile = pck.user_name;
-
+  
   app.set('port', 3000);
   app.disable('etag');
   app.enable('strict routing');
@@ -43,29 +43,21 @@ Server.startServer = function(){
   app.use(express.methodOverride());
   app.use(app.router);
 
-  app.get("/", function(req,res){
-    res.send("<h1>Congratulations 3VOT Local Server is Running</h1><h2>Now head to your app @ <a href='http://localhost:3000/APP_NAME'>http://localhost:3000/APP_NAME</a></h2>");
+  
+  app.get("/", function(req, res) {
+    middleware(req,res)
   });
 
-  app.get("/:app_name", function(req, res) {
-    var app_name = req.params.app_name
-    res.redirect("/" + app_name + "/")
-  });
-
-  app.get("/:app_name/", function(req, res) {
-    var app_name = req.params.app_name
-    if(app_name.indexOf(".") > -1) return res.send(404); // ignore files just apps
-    middleware(app_name,req,res)
-  });
-
-  app.get("/:app_name/*", function(req, res) {
+  app.get("/*", function(req, res) {
     var app_name = req.params.app_name;
+    var options = Packs.package({},false);
     var file = req.params[0];
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", file );
+
+    var filePath = Path.join(  process.cwd(), options.threevot.distFolder, file );
     fs.stat(filePath, function(err,stats){
       if(err) return res.send(404);
       if(!stats.isFile()) return res.send(404);
-      var fileBody = Transform.readByType(filePath, "local", {app_name: app_name} )
+      var fileBody = Transform.readByType(filePath, "local", {} )
       res.set('Content-Type', mime.lookup(filePath));
       res.send(fileBody);
     });
@@ -77,14 +69,18 @@ Server.startServer = function(){
 
 }
 
-function middleware(app_name,req, res) {
-  checkApp(app_name)
-  .then(preHook)
-  .then(function(){ return buildApp(app_name); })
+function middleware(req, res) {
+  var options;
+
+  console.log(preHook());
+
+  preHook()
+  .then( function(){ return Packs.get({},false) } )
+  .then( function(result){ options=result; return buildApp(result); } )
   .then( postHook )
   .then(function(){
-    var filePath = Path.join(  process.cwd() , "apps", app_name, "app", "index.html" );
-    var fileBody = Transform.readByType(filePath, "local", { app_name: app_name });
+    var filePath = Path.join(  process.cwd(), options.package.threevot.distFolder, "index.html" );
+    var fileBody = Transform.readByType(filePath, "local", {});
     res.set('Content-Type', mime.lookup(filePath));
     return res.send(fileBody);
   })
@@ -93,32 +89,15 @@ function middleware(app_name,req, res) {
   })
 };
 
-function checkApp(app_name){
+function buildApp(options){
   var deferred = Q.defer();
-  process.nextTick(function(){
-    try{
-      app_package = require(Path.join(  process.cwd() , "apps", app_name, "package.json") );
-      deferred.resolve(app_name)
-    }catch(err){
-      Log.error(err, "actions/server", 154)
-      deferred.reject("App " + app_name + " Not found in ")
-    } 
-  });
-  return deferred.promise; 
-}
+  Log.debug(options.promptValues.app_name,"server",132)
 
-
-function buildApp(app_name){
-  var deferred = Q.defer();
-
-  Log.debug(app_name,"server",132)
-
-  AppBuild( app_name, "localhost", false, Server.domain )
+  AppBuild( options )
   .then( function(){
-    return deferred.resolve(app_name);
+    return deferred.resolve(options.promptValues.app_name);
   })
   .fail( function(err){ 
-    //Log.error(err, "actions/server", 164); 
     return deferred.reject(err);
   });
 
@@ -128,8 +107,7 @@ function buildApp(app_name){
 function transformHook(app_name, body, file){
 
     try{
-      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"transform.js" );
-
+      var prePath = Path.join(  process.cwd(), "hooks" ,"transform.js" );
 
       if( fs.existsSync(prePath) ){
         return require(prePath)(body,file);
@@ -143,39 +121,34 @@ function transformHook(app_name, body, file){
     return body;
 }
 
-function preHook(app_name){
+function preHook(){
   var deferred = Q.defer();
 
-    try{
-      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"pre.js" );
+    var prePath = Path.join(  process.cwd(), "hooks" ,"pre.js" );
 
-      if( fs.existsSync(prePath) ){
+    fs.exists(prePath, function(err){
+      if(err) return deferred.resolve()
 
-        var exec = require('child_process').exec,child;
+      var exec = require('child_process').exec,child;
 
-        child = exec('node ' + prePath,
-        function (error, stdout, stderr) {
+      child = exec('node ' + prePath, function (error, stdout, stderr) {
+        if (error !== null){
+          Log.debug(error, "server:146");
+        }
+        Log.debug(stdout, "server:146");
+        return deferred.resolve()
+      });
+    });
 
-          if (error !== null){
-            Log.debug(error, "server:146");
-          }
-          Log.debug(stdout, "server:146");
-          return deferred.resolve(app_name)
-        });
-      }
-      else  return deferred.resolve(app_name)
-
-    }catch(err){ return deferred.resolve(app_name) }
-
-    return deferred.promise;
+  return deferred.promise;
 }
 
 
-function postHook(app_name){
+function postHook(){
   var deferred = Q.defer();
 
     try{
-      var prePath = Path.join(  process.cwd() , "apps", app_name, "hooks" ,"post.js" );
+      var prePath = Path.join(  process.cwd(), "hooks" ,"post.js" );
 
       if( fs.existsSync(prePath) ){
 
@@ -188,12 +161,12 @@ function postHook(app_name){
             Log.debug(error, "server:194");
           }
           Log.debug(stdout, "server:196");
-          return deferred.resolve(app_name)
+          return deferred.resolve()
         });
       }
-      else  return deferred.resolve(app_name)
+      else  return deferred.resolve()
 
-    }catch(err){ return deferred.resolve(app_name) }
+    }catch(err){ return deferred.resolve() }
 
     return deferred.promise;
 }
