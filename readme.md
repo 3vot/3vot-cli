@@ -6,7 +6,7 @@
 * Developers publish their Apps with automatic support for millions of users. ( Static, Browser, Single Page )
 * For organizations, 3VOT is a Full Production Line for (100% browser based) JS Apps  
 
-####3VOT main feature is to write 100% Browser Apps, no servers.
+####3VOT goal is to help you write 100% Browser Apps, no servers.
 
 ## Features
 
