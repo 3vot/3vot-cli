@@ -56,9 +56,11 @@ function removeUser(){
 function listUser(){
   Packs.get({}, false)
   .then( function(options){
-     for(user in options.user.users){
-        console.log(user + " : " + options.user.users[user].email );
-      }
+    if(!options.user || !options.user.users || options.user.users.length == 0 ) return Log.info("No users found, use 3vot adduser")
+
+    for(user in options.user.users){
+       console.log(user + " : " + options.user.users[user].email );
+     }
   })  
   .fail( function(err){ Log.error(err, "./prompt/profile",43); } );
 }

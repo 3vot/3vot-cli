@@ -34,7 +34,6 @@ function download(){
     .then(function(){ process.exit() })
     .fail( function(err){  Log.error(err, "./bin/app", 35 ); });
   };
-
 }
 
 function create(){

@@ -47,7 +47,7 @@ function getProfile(){
 }
 
 function saveuser(){
-  promptOptions.user.users = promptOptions.user.users || {};
+  if( promptOptions.user.users || promptOptions.user.users === undefined || promptOptions.user.users == "undefined") promptOptions.user.users = {};
   promptOptions.user.users[promptOptions.promptValues.user_name] = promptOptions.promptValues;
   return Packs.set(promptOptions.user);
 

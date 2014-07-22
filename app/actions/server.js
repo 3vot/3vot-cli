@@ -55,7 +55,6 @@ Server.startServer = function(){
     var filePath = Path.join(  process.cwd(), options.threevot.distFolder, file );
 
     fs.stat(filePath, function(err,stats){
-      console.log(err)
 
       if(err) return res.send(404);
       if(!stats.isFile()) return res.send(404);
@@ -73,8 +72,6 @@ Server.startServer = function(){
 
 function middleware(req, res) {
   var options;
-
-  console.log(preHook());
 
   preHook()
   .then( function(){ return Packs.get({},false) } )
