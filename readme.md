@@ -1,105 +1,68 @@
-### 3VOT is an innovation on how we build Apps using Javascript
+### 3VOT is like Heroku for Javascript Apps
 
-There is a new generation of Apps that are amazing, reactive, beautifull and with 3VOT posible. Give it a try and learn how simple it is to build modern Javascript Applications the modular, serverless, profesional way.
+> 3VOT is a profesional web publishing platform, for everybody to publish to the internet via 3VOT cloud.
 
+* For everybody 3VOT is the way to publish docs, images and pages to the internet.
+* Developers publish their Apps with automatic support for millions of users. ( Static, Browser, Single Page )
+* For organizations, 3VOT is a Full Production Line for (100% browser based) JS Apps  
 
-* 3VOT is a platform to **build Single Page Apps**, apps without page refresh, no click a wait!
-* An **Open Source Cloud Infrastructure** to scale apps to over a hundread millions users
-* The technology to write Enterprise Apps with **Javascript in Modules and Components**, the NodeJS way.
-* The automation to instantly require **over 80,000 dependencies** and hundreds of Third Party Services.
+####3VOT goal is to help you write 100% Browser Apps, no servers.
 
-**3VOT Browser Apps** Build standard html,css and js **browser apps** using Modular Code and Dependency Managment just like we write NodeJS Apps, but on the browser.
+## Features
 
-**3VOT is Serverless** we automated the way to pack Apps into Static Assets. There is no server to setup, configure, scale and worry about. There is no server, Apps are published on AWS S3 ultrascalable and hyperdependable Storage.
+###Upload your apps to the internet
+Upload anything from simple HTML Page to Javascript Apps in Angular, Backbone, Bootstrap, Yeoman, Grunt/Gulp. <br/> **Build your way** and don't worry about servers, publish profesionally.
 
-**3VOT Command Line Tools** automate the whole app development livecycle like installing depedencies, app versioning, downloading ( source code / base apps / templates / examples ) , uploading development versions, and publishing final production versions versions.
+> 3VOT can also share a few tricks like [multi-platform apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps), [embeddable apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps) and [Web Components]()
 
-**Standalone or Embedded** 3VOT Apps can be deployed anywhere, as a Standalone App or embedded inside a traditional client-server app, a CMS, blog or static page.
+###3VOT Cloud
+HTML, CSS and JS are static. **We do not need a Server**. 3VOT is the Cloud for the Frontend, give your app superpowers with one simple command. High-availability, Infinite Scalability and World Delivery Network  [Learn More about 3VOT Cloud]()
 
-**3VOT is Open** as a developer you can use the 3VOT for free to build robust JS Apps, you are free to choose your favorite framework, patterns and tools. No propietary lock-in.
+###Modular Build System
+There's a better way to write javascript, 3VOT empowers you to build better and more maintenable apps, writting less code and using any NPM Package. [Learn more here about Modular Code](https://github.com/3vot/3vot-cli/wiki/Modular-Javascript)
 
-**3VOT is an automated Production Line of Apps**, organizations can use it to take app development to next level. Automation, Standarization, Quality, Maintanability. Just like a production line of cars, 3VOT has robots that improve manual processes and let's your org reach farther.
-
-### 3VOT will make you 10x Faster and 100X Happier ###
+> In 3VOT we imagine how things should be, then we bend reality and hack until reality becomes our vision.
 
 ## Installation
 ```
 npm install 3vot-cli -g
 ```
 
-### Documentation
-**[5 minute Getting Started](https://github.com/3vot/3vot-cli/wiki/Getting-Started)**
+## Documentation
+We have created a Wiki with explanations, examples and documentation, visit it to learn more.
 
-**[Documentation](https://github.com/3vot/3vot-cli/wiki/Documentation)**
+**[3VOT Docs & Wiki](https://github.com/3vot/3vot-cli/wiki)**
+* [Create your first App](https://github.com/3vot/3vot-cli/wiki/Getting-Started-with-a-new-App)
+* [Setup 3VOT with your existing App](https://github.com/3vot/3vot-cli/wiki/Getting-Started-with-a-Current-App)
 
-**[Multiplatform Apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps)**
-
-**[Embedded Apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps)**
-
-### Examples and Demos
-**What can developers build with 3VOT:** Everything that's browser based and more!
-
-EXAMPLES && DEMOS COMMING SOON
-
-* Javascript Apps: Maintanable and Reusable Single Page Applications
-* A/B Testing: Build Web Components, embedded them in your apps. The simplest way to A/B test.
-* Data Visualizations: Build interative Apps to explore complex information interatively.
-* Google Doc Driven Apps: Keep Data in Google Spreasheet and use it in your app.
-* Content Driven Apps: Build amazing Web Stories while allowing users add/edit text,images, videos in GDocs.
+#### 3VOT will make you 10x Faster and 100X Happier
 
 
-###History###
-Frontend Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed. 
+## About Browser Aps ##
 
-Modern frontend apps are called Single Page Applications. Think Facebook, where the page does not refresh when you Like or Share; 
+Browser Apps are the cool apps that require no page refresh, exists only in the browser, no server, no click an wait. Also known as Single Page Apps (SPApps) and made famous by Facebook & Twitter. 
 
-Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it just happends instantly. 
+Apps used to be build using the Client-Server model using servers like php, nodejs, .net and rails. Each action like a button required the loop to the server and the page needed to be refreshed to show the response.
+
+Browser Apps also called Single Page Applications. Think Facebook, where the page does not refresh when you Like, Share or scroll to get more content.
+
+Imagine your app behaving that way, it's possible. These Apps connect to a backend server or API via AJAX so each time something is saved or retrieved the page does not need to refresh, it happens instantly. 
+
+
+With 3VOT junior developers can build SPApps with their favorite frameworks, while advanced developers can write their own using modular code. It is 100% Open, does not impose anything and GOYW (gets out of your way)
+
+
 
 **Remember Single Page Apps are not the future, they are the present**
 
-###The next Generation of Mobile First and Responsive###
-They are good alternatives when you don't have the technology, but what if you could control a dedicated experience for each device, not a degraded for desktop or degraded for mobile, but awesome in both.
-
-With 3VOT you can write an app in modules and components, and choose which components are loaded into each device depending on screen size and device features. Simple as that.
-
-##The Production Line of Apps
-3VOT was build as a full-fledged profesional production line and it has a command line tool to automated everything.
-
-3VOT introduces the concept of version, each deployment is versioned so it's super simple to go back to old builds.
-
-In the same way 3VOT introduces App Downloads, so you can download any version of an App and use it as a template for a new app. Your organization can set base proyects or templates that are already structured a standard way.
-
-Dependency Managment is automated, so there is no worries about one developer working in one version of Jquery crasing with another one, integration is done automatically with every build.
-
-Onbording new developers is simple, no enviroment to setup, everything is standard. Training is simple as well, you may create apps specifically for that and have new-comers download them. That's how with 3VOT junior developers can build enterprise apps.
-
-
-##Features
-
-**3VOT is a production line of Apps, use it to learn or to empower your demaning App Development Teams**
-
-**Profesional Javascript Applications have the following features:**
-* Standard HTML, JS & CSS without "Hacks" that everybody can understand top to bottom.
-* No Page Refresh ( MVC Single Page Applications with no code-spaguetti )
-* Modular Code ( written in modules, structured in files and folders )
-* Multiplatform ( choose what code is loaded in Mobile, Tablet and Desktops  )
-* Write Clean NodeJS Style code that runs in the browser
-* Use NPM & Github Dependencies
-
-**3VOT simplifes and unifies how we use the following technolgies**
-* **Browserify:** Improves how we write and reuse code.
-* **S3:** Publish Dynamic Single Page Javascript Apps **Statically** in Amazon S3 ( or anywhere else )
-* **NPM:** Select from thousand dependencies and require them NODEJS Style
-
-
 ## Use & Support  ##
-All 3VOT Solutions are Open Source and should be used to progress. 
+All 3VOT Solutions are Open Source 
 
 3VOT is also being used commercially by several organizations like Fusion.net & Rodco S.A.
 
 3VOT is an ISV Partner of Salesforce.com where CLI is published as CLAY in App Exchange as an Enterprise Solution.
 
-For both cases we provide profesional remote and on-site support, custom develpment and training at an agreed hourly rate **contact us at support@3vot.com**
+For both cases we provide profesional remote and on-site support, custom develpment and training at an agreed hourly rate **contact us at one@3vot.com**
 
 ## LICENSE ##
 MIT 
