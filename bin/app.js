@@ -27,7 +27,7 @@ function download(){
     
     Packs._3vot(result, false)
     .then( function(res){ result = res; return Download(result); } )
-    .then( function(){ Log.info("OK. The App was downloaded. To preview locally type: 3vot server "); } )
+    .then( function(){ Log.info("3. Preview with '3vot server'"); Log.info("ok"); } )
     .then( function(){ 
       return Stats.track("app:download", result ) 
     })
@@ -50,7 +50,7 @@ function create(){
 
       Packs._3vot(result, false)
       .then( function(res){ result = res; return Download(result); } )
-      .then( function(){ Log.info("OK. The App Template was downloaded. To preview locally type: 3vot server "); } )
+      .then( function(){ Log.info("ok"); } )
       .then( function(){ return Stats.track("app:template", result ) } )
       .then(function(){ process.exit() })
       .fail( function(err){  Log.error(err, "./prompt/app", 82 ); });  
@@ -114,7 +114,7 @@ function install(){
 
     Packs._3vot( {}, false)
     .then( function(res){ result = res; return Install(result); } )
-    .then( function(){ Log.info("OK. The App was installed"); } )
+    .then( function(){ Log.info("ok"); } )
     .then( function(){ return Stats.track("app:install", result ) } )
     .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",140 ); });
@@ -130,7 +130,7 @@ function build(production){
 
     Packs._3vot(result, false)
     .then( function(res){ result = res; return Build(result); } )
-    .then( function(){ Log.info("OK. The App was build" ); } )
+    .then( function(){ Log.info("ok"); } )
     .then( function(){ return Stats.track("app:build", result ) } )
     .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",154 ); });
