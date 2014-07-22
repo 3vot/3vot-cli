@@ -13,10 +13,10 @@
 ###Upload your apps to the internet
 Upload anything from simple HTML Page to Javascript Apps in Angular, Backbone, Bootstrap, Yeoman, Grunt/Gulp. <br/> **Build your way** and don't worry about servers, publish profesionally.
 
-> 3VOT can also share a few tricks like [multi-platform apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps), [embeddable apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps) and [Web Components]()
+> 3VOT can also share a few tricks like [multi-platform apps](https://github.com/3vot/3vot-cli/wiki/Multiplatform-Apps), [embeddable apps](https://github.com/3vot/3vot-cli/wiki/Embedded-Apps) and [Web Components](https://github.com/3vot/3vot-cli/wiki/Modular-Javascript).
 
 ###3VOT Cloud
-HTML, CSS and JS are static. **We do not need a Server**. 3VOT is the Cloud for the Frontend, give your app superpowers with one simple command. High-availability, Infinite Scalability and World Delivery Network  [Learn More about 3VOT Cloud]()
+HTML, CSS and JS are static. **We do not need a Server**. 3VOT is the Cloud for the Frontend, give your app superpowers with one simple command. High-availability, Infinite Scalability and World Delivery Network.  [Learn More about 3VOT Cloud - Comming Soon!]()
 
 ###Modular Build System
 There's a better way to write javascript, 3VOT empowers you to build better and more maintenable apps, writting less code and using any NPM Package. [Learn more here about Modular Code](https://github.com/3vot/3vot-cli/wiki/Modular-Javascript)
