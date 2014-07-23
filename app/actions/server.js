@@ -29,6 +29,7 @@ module.exports = Server;
 Server.prompt =  function( isNitrous ){
   prompt.start();
   Server.domain = "localhost:3000"
+  Log.debug("starting server in localhost:3000","server",32)
   Server.startServer()
 };
 
