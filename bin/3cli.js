@@ -66,8 +66,6 @@ else if( argv.h ){
     "",
     "  build                  Builds the development version of the app (used in manual operations)",
     "",
-    "  install                Installs the NPM and Bower dependencies of the app (used in manual operations)",
-    "",
     
     "Utilities:",
     "",
@@ -108,7 +106,6 @@ else{
 
   else if( argv._.indexOf("build") > -1 ){ App.build( argv.app, argv.p ); }
 
-  else if( argv._.indexOf("install") > -1 ){ App.install( argv.app ); }
 
   else if( argv._.indexOf("server") > -1 ){ Server.prompt( ); }
 

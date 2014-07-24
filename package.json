@@ -17,7 +17,6 @@
     "optimist": "~0.6.0",
     "q": "~1.0.0",
     "browserify": "~3.20.2",
-    "bower": "~1.2.8",
     "aws-sdk": "~2.0.0-rc19",
     "semver": "~2.2.1",
     "fstream": "~0.1.25",
@@ -28,17 +27,13 @@
     "rimraf": "~2.2.8",
     "eco": "~1.1.0-rc-3",
     "superagent": "~0.16.0",
-    "coffeeify": "~0.5.2",
-    "brfs": "0.0.8",
-    "browserify-eco": "~0.2.4",
     "3vot-model": "0.0.20",
-    "uglifyify": "~2.0.0",
     "mkpath": "~0.1.0",
-    "mixpanel": "0.0.19",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.51",
+    "3vot-cloud": "0.0.52",
     "3vot": "~0.1.4",
-    "cheerio": "~0.17.0"
+    "cheerio": "~0.17.0",
+    "open": "0.0.5"
   },
   "testDependencies": {
     "mocha": "~1.17.0",

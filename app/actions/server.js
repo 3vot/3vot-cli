@@ -22,6 +22,8 @@ var AppBuild = require("3vot-cloud/app/build")
 var Packs = require("3vot-cloud/utils/packs")
 var rimraf = require("rimraf")
 var Log = require("3vot-cloud/utils/log")
+var open = require("open");
+
 var User;
 
 module.exports = Server;
@@ -31,6 +33,7 @@ Server.prompt =  function( isNitrous ){
   Server.domain = "localhost:3000"
   Log.debug("starting server in localhost:3000","server",32)
   Server.startServer()
+  open("http://localhost:3000");
 };
 
 Server.startServer = function(){

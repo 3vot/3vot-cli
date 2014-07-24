@@ -3,7 +3,6 @@ var Packs = require("3vot-cloud/utils/packs")
 var Download = require("3vot-cloud/app/download")
 var Upload = require("3vot-cloud/app/upload")
 var Build = require("3vot-cloud/app/build")
-var Install = require("3vot-cloud/app/install")
 var Log = require("3vot-cloud/utils/log")
 var Path = require("path")
 var Stats = require("3vot-cloud/utils/stats")
@@ -11,6 +10,7 @@ var WalkDir = require("3vot-cloud/utils/walk")
 var Transform = require("../app/utils/transform")
 var fs = require("fs")
 var eco = require("eco")
+var open = require("open");
 
 function download(){
   var prompts = [ 
@@ -82,7 +82,7 @@ function publish(ignoreSource){
       }
       return Upload(result); } )
     .then( function(){ 
-      Log.info("App Available at: http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name )
+      open("http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name );
       return Stats.track("app:publish", result ) 
     })
     .then(function(){ process.exit() })
@@ -100,25 +100,11 @@ function upload(ignoreSource){
     }
     return Upload(result); } )
   .then( function(app){ 
-    Log.info("App Available at: http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name +  "_" + app.version )
+    open("http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name +  "_" + app.version);
     return Stats.track("app:upload", result ) 
   })
   .then(function(){ process.exit() })
   .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
-}
-
-
-function install(){
-
-    Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
-
-    Packs._3vot( {}, false)
-    .then( function(res){ result = res; return Install(result); } )
-    .then( function(){ Log.info("ok"); } )
-    .then( function(){ return Stats.track("app:install", result ) } )
-    .then(function(){ process.exit() })
-    .fail( function(err){ Log.error(err, "./prompt/app",140 ); });
-
 }
 
 
@@ -151,6 +137,5 @@ module.exports = {
   download: download,
   publish: publish,
   build: build,
-  install: install,
   create: create
 }
