@@ -107,9 +107,7 @@ function upload(ignoreSource){
   .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
 }
 
-
 function build(production){
-
     Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
     var result = {}
     if(production) result.transform = function(tempvars){ transformToProduction(result,tempvars) }
@@ -120,7 +118,6 @@ function build(production){
     .then( function(){ return Stats.track("app:build", result ) } )
     .then(function(){ process.exit() })
     .fail( function(err){ Log.error(err, "./prompt/app",154 ); });
-
 }
 
 function transformToProduction( result, tempvars ){
