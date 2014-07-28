@@ -16,7 +16,6 @@ var extend = require('util')._extend
 var mime = require('mime');
 
 var Server = {}
-var Builder = require("3vot-cloud/utils/builder");
 var WalkDir = require("3vot-cloud/utils/walk")
 var AppBuild = require("3vot-cloud/app/build")
 var Packs = require("3vot-cloud/utils/packs")
