@@ -25,7 +25,8 @@ function execute(options){
 
   promptOptions = options;
 
-  if(promptOptions.build == "y") promptOptions.build = true; else promptOptions.build = false;
+  if(promptOptions.build == "y") promptOptions.build = true; 
+  else promptOptions.build = false;
 
   scaffold()
   .then(function(){ return deferred.resolve(promptOptions) })
@@ -35,20 +36,23 @@ function execute(options){
 }
 
 function scaffold(){
-    Log.debug("Scaffolding Projects", "actions/profile_setup", 52);
-    var deferred = Q.defer();
+  Log.debug("Scaffolding Projects", "actions/profile_setup", 52);
+  var deferred = Q.defer();
 
-    //fs.mkdirSync( Path.join( process.cwd(), "tmp" ));
+  var packagePath = Path.join(  process.cwd(), "package.json" );
 
-    if(!promptOptions.package) promptOptions.package = createPackage(promptOptions.app_name);
-    promptOptions.package.threevot = adjustPackage()
+  fs.exists(packagePath,function(exists){
+    if(exists) promptOptions.package = adjustPackage( require(packagePath) );
+    else promptOptions.package = createPackage(promptOptions.app_name);
 
-    fs.writeFile( Path.join(process.cwd(), "package.json"), JSON.stringify(promptOptions.package, null, '\t'), function(err){
+    fs.writeFile( packagePath, JSON.stringify(promptOptions.package, null, '\t'), function(err){
       if(err) return deferred.reject(err);
       return deferred.resolve();
     });
 
-    return deferred.promise;
+  })
+
+  return deferred.promise;
 }
 
 function createPackage(app_name){
@@ -56,12 +60,29 @@ function createPackage(app_name){
     "name": app_name,
     "description": "",
     "version": "0.0.1",
+    "threevot": {
+      "version": "1",
+      "instructions":"",
+      "build": promptOptions.build || true,
+      "distFolder": promptOptions.dist || "dist",
+      "screens": {
+        "0-320": "index",
+        "320-900": "index",
+        "900-1200": "index",
+        "1200-5000": "index"
+      },
+      "extensions": [],
+      "transforms": [],
+      "external": {}
+    },
     "dependencies": {}
   }
 }
 
-function adjustPackage(){
-  return {
+function adjustPackage(package){
+  package.name = promptOptions.app_name;
+  package.version = "0.0.1";
+  package.threevot = {
     "version": "1",
     "instructions":"",
     "build": promptOptions.build || true,
@@ -76,6 +97,9 @@ function adjustPackage(){
     "transforms": [],
     "external": {}
   }
+
+  return package;
+
 }
 
 module.exports = execute;
