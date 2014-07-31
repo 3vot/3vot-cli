@@ -128,8 +128,8 @@ function preHook(){
 
     var prePath = Path.join(  process.cwd(), "hooks" ,"pre.js" );
 
-    fs.exists(prePath, function(err, exists){
-      if(err || !exists) return deferred.resolve()
+    fs.exists(prePath, function(exists){
+      if(!exists) return deferred.resolve()
 
       var exec = require('child_process').exec,child;
 
