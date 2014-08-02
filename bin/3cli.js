@@ -100,11 +100,11 @@ else{
 
   else if( argv._.indexOf("create") > -1 ){ App.create("blank"); }
 
-  else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.app, argv.ignoreSource ); }
+  else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.ignoreSource ); }
 
-  else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.app, argv.ignoreSource ); }
+  else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.ignoreSource ); }
 
-  else if( argv._.indexOf("build") > -1 ){ App.build( argv.app, argv.p ); }
+  else if( argv._.indexOf("build") > -1 ){ App.build( argv.p ); }
 
 
   else if( argv._.indexOf("server") > -1 ){ Server.prompt( ); }
