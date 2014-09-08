@@ -2,7 +2,7 @@ var fs = require("fs")
 var _3vot = require("3vot/utils")
 
 var placeholder = "{3vot}"
-var local = "//localhost:3000";
+var local = "//localhost:";
 var production = "//3vot.com"
 
 var Q = require("q")
@@ -10,7 +10,7 @@ var Q = require("q")
 var Transform = { local: toLocal, production: toProduction }
 
 function toLocal( body, transformOptions ){
-	var route = local
+	var route = local + transformOptions.port
 	body = _3vot.replaceAll(body, transformOptions.placeholder || placeholder, route);
 	return body;
 }

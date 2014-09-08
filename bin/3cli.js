@@ -66,6 +66,9 @@ else if( argv.h ){
     "",
     "  build                  Builds the development version of the app (used in manual operations)",
     "",
+    "  run                    Runs a predefined process for the current app, prompts to select from a list",
+    "",
+
     
     "Utilities:",
     "",
@@ -106,8 +109,9 @@ else{
 
   else if( argv._.indexOf("build") > -1 ){ App.build( argv.p ); }
 
+  else if( argv._.indexOf("run") > -1 ){ App.run(); }
 
-  else if( argv._.indexOf("server") > -1 ){ Server.prompt( ); }
+  else if( argv._.indexOf("server") > -1 ){ Server.prompt( argv.port ); }
 
   else{
     

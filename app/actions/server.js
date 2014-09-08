@@ -24,21 +24,23 @@ var Log = require("3vot-cloud/utils/log")
 var open = require("open");
 
 var User;
+var port = 3000;
 
 module.exports = Server;
 
-Server.prompt =  function( isNitrous ){
+Server.prompt =  function( userPort ){
+  if(userPort) port = userPort;
   prompt.start();
-  Server.domain = "localhost:3000"
-  Log.debug("starting server in localhost:3000","server",32)
+  Server.domain = "localhost:" + port
+  Log.debug("starting server in localhost:" + port,"server",32)
   Server.startServer()
-  open("http://localhost:3000");
+  open("http://localhost:" + port);
 };
 
 Server.startServer = function(){
   var app = express();    
   
-  app.set('port', 3000);
+  app.set('port', port);
   app.disable('etag');
   app.enable('strict routing');
   app.use(express.logger('dev'));
@@ -61,7 +63,7 @@ Server.startServer = function(){
 
       if(err) return res.send(404);
       if(!stats.isFile()) return res.send(404);
-      var fileBody = Transform.readByType(filePath, "local", {} )
+      var fileBody = Transform.readByType(filePath, "local", {port: port} )
       res.set('Content-Type', mime.lookup(filePath));
       res.send(fileBody);
     });
@@ -82,7 +84,7 @@ function middleware(req, res) {
   .then( postHook )
   .then(function(){
     var filePath = Path.join(  process.cwd(), options.package.threevot.distFolder, "index.html" );
-    var fileBody = Transform.readByType(filePath, "local", {});
+    var fileBody = Transform.readByType(filePath, "local", {port: port});
     res.set('Content-Type', mime.lookup(filePath));
     return res.send(fileBody);
   })

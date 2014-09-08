@@ -11,9 +11,22 @@ var Transform = require("../app/utils/transform")
 var fs = require("fs")
 var eco = require("eco")
 var open = require("open");
+var RunScript = require("../app/actions/runScript")
+
+function run(){
+  Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
+  Packs._3vot({}, false)
+  .then( function(result){ return RunScript(result); } )
+  .then( function(){ 
+    Log.info("<:> 3VOT SCRIPT COMPLETE :=)")
+    return Stats.track("app:run" ) 
+  })
+  .then(function(){ process.exit() })
+  .fail( function(err){  Log.error(err, "./bin/app", 18 ); });
+}
 
 function download(){
-  var prompts = [ 
+  var prompts = [
     { name: 'app_name', description: 'App Name ( The name of the app you want to download)' },
     { name: 'app_user_name', description: 'Profile: ( The profile name of the owner of the app )' }, 
     { name: 'app_version', description: 'Version: ( The App version) hit enter for latest )' },
@@ -32,7 +45,7 @@ function download(){
       return Stats.track("app:download", result ) 
     })
     .then(function(){ process.exit() })
-    .fail( function(err){  Log.error(err, "./bin/app", 35 ); });
+    .fail( function(err){  Log.error(err, "./bin/app", 52 ); });
   };
 }
 
@@ -53,7 +66,7 @@ function create(){
       .then( function(){ Log.info("ok"); } )
       .then( function(){ return Stats.track("app:template", result ) } )
       .then(function(){ process.exit() })
-      .fail( function(err){  Log.error(err, "./prompt/app", 82 ); });  
+      .fail( function(err){  Log.error(err, "./prompt/app", 8273 ); });  
    };
 
 }
@@ -81,14 +94,15 @@ function publish(ignoreSource){
         transformToProduction(result,tempvars)
       }
       return Upload(result); } )
-    .then( function(){ 
-      open("http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name );
+    .then( function(){
+      var url =  "http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name 
+      Log.info("App Available at: " + url)
+      open(url);
       return Stats.track("app:publish", result ) 
     })
     .then(function(){ process.exit() })
-    .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
+    .fail( function(err){ Log.error(err, "./prompt/app",106 ); });
   }
-
 }
 
 function upload(ignoreSource){
@@ -100,11 +114,13 @@ function upload(ignoreSource){
     }
     return Upload(result); } )
   .then( function(app){ 
-    open("http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name +  "_" + app.version);
+    var url = "http://" + result.package.threevot.paths.productionBucket + "/" + result.user.user_name + "/" + result.package.name +  "_" + app.version
+    Log.info("App Available at: " + url)
+    open(url);
     return Stats.track("app:upload", result ) 
   })
   .then(function(){ process.exit() })
-  .fail( function(err){ Log.error(err, "./prompt/app",146 ); });
+  .fail( function(err){ Log.error(err, "./prompt/app",123 ); });
 }
 
 function build(production){
@@ -117,7 +133,7 @@ function build(production){
     .then( function(){ Log.info("ok"); } )
     .then( function(){ return Stats.track("app:build", result ) } )
     .then(function(){ process.exit() })
-    .fail( function(err){ Log.error(err, "./prompt/app",154 ); });
+    .fail( function(err){ Log.error(err, "./prompt/app",136 ); });
 }
 
 function transformToProduction( result, tempvars ){
@@ -134,5 +150,6 @@ module.exports = {
   download: download,
   publish: publish,
   build: build,
-  create: create
+  create: create,
+  run: run
 }
