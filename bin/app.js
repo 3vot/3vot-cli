@@ -11,19 +11,7 @@ var Transform = require("../app/utils/transform")
 var fs = require("fs")
 var eco = require("eco")
 var open = require("open");
-var RunScript = require("../app/actions/runScript")
 
-function run(){
-  Log.info("<:> 3VOT DIGITAL CONTENT CLOUD :=)")
-  Packs._3vot({}, false)
-  .then( function(result){ return RunScript(result); } )
-  .then( function(){ 
-    Log.info("<:> 3VOT SCRIPT COMPLETE :=)")
-    return Stats.track("app:run" ) 
-  })
-  .then(function(){ process.exit() })
-  .fail( function(err){  Log.error(err, "./bin/app", 18 ); });
-}
 
 function download(){
   var prompts = [
@@ -150,6 +138,5 @@ module.exports = {
   download: download,
   publish: publish,
   build: build,
-  create: create,
-  run: run
-}
+  create: create
+  }

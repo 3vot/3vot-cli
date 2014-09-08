@@ -4,9 +4,10 @@ var Log = require("3vot-cloud/utils/log")
 var Packs = require("3vot-cloud/utils/packs")
 var Walk = require("3vot-cloud/utils/walk")
 var Path = require("path")
+var eco = require("eco")
+var fs = require("fs")
 
 var prompt = require("prompt")
-
 
 var promptOptions = {
   public_dev_key: null,
@@ -22,7 +23,7 @@ var tempVars = {
 var scriptPath = Path.join(process.cwd(), "scripts" )
 
 
-function execute(options){
+function run(options){
   promptOptions = options;
   var deferred = Q.defer();
 
@@ -43,21 +44,20 @@ function discoverProcess(){
   var process= [];
   for (var i = files.length - 1; i >= 0; i--) {
     var file = files[i];
-    if(file.name.indexOf(".json") != -1) tempVars.process.push( require(file.path) )
+    if(file.name.indexOf(".json") != -1){
+      tempVars.process.push( require(file.path) )
+    }
   };
 }
 
 function promptForProcess(object){
   var deferred = Q.defer();
-
   prompt.start();
-
   var description = "Select a process to run:\n";
   var index = 1;
   var processArray = [];
   for( processIndex in tempVars.process){
-    var process  = tempVars.process[processIndex]
-
+    var process  = tempVars.process[processIndex];
     description += index + ": " + process.name + "\n" + process.description + "\n" + "\n";
     processArray.push( process );
     index++;
@@ -72,7 +72,6 @@ function promptForProcess(object){
     tempVars.selectedProcess = process;
     deferred.resolve();
   });
-
   return deferred.promise;
 }
 
@@ -98,4 +97,23 @@ function runScript(executeFunction){
 }
 
 
-module.exports = execute;
+function buildProcess(options){
+  var scriptsPath =Path.join( process.cwd(), "scripts")
+  var template = fs.readFileSync( Path.join( Path.dirname(fs.realpathSync(__filename)), "..","..", "templates", "run_process.eco" ), "utf-8" )
+  if(!fs.existsSync(scriptsPath)) fs.mkdirSync(scriptsPath);
+  fs.writeFileSync( Path.join( process.cwd(),  "scripts", options.promptValues.process_name + ".json" ), eco.render(template)  );
+}
+
+function buildScript(options){
+  var scriptsPath =Path.join( process.cwd(), "scripts")
+  var template = fs.readFileSync( Path.join( Path.dirname(fs.realpathSync(__filename)), "..","..", "templates", "run_script.eco" ) , "utf-8")
+  if(!fs.existsSync(scriptsPath)) fs.mkdirSync(scriptsPath); 
+  fs.writeFileSync( Path.join( process.cwd(),"scripts", options.promptValues.script_name + ".js" ), eco.render(template)  ); 
+}
+
+
+module.exports = {
+  run: run,
+  buildProcess: buildProcess,
+  buildScript: buildScript
+};

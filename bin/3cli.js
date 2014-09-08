@@ -10,6 +10,8 @@ var _3Model = require("3vot-model")
 
 var Profile = require("./profile")
 var App = require("./app")
+var DevOps = require("./devops")
+
 var Server = require("../app/actions/server")
 var Log = require("3vot-cloud/utils/log")
 var Stat = require("3vot-cloud/utils/stats")
@@ -109,7 +111,7 @@ else{
 
   else if( argv._.indexOf("build") > -1 ){ App.build( argv.p ); }
 
-  else if( argv._.indexOf("run") > -1 ){ App.run(); }
+  else if( argv._.indexOf("run") > -1 ){ DevOps.run(); }
 
   else if( argv._.indexOf("server") > -1 ){ Server.prompt( argv.port ); }
 

@@ -11,6 +11,8 @@ var argv = require('optimist').argv;
 var request = require("superagent")
 var devDomain = null;
 var Transform = require("../utils/transform")
+var Vot = require("./vot")
+
 var extend = require('util')._extend
 
 var mime = require('mime');
@@ -21,6 +23,7 @@ var AppBuild = require("3vot-cloud/app/build")
 var Packs = require("3vot-cloud/utils/packs")
 var rimraf = require("rimraf")
 var Log = require("3vot-cloud/utils/log")
+
 var open = require("open");
 
 var User;
@@ -46,9 +49,11 @@ Server.startServer = function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+
+  app.use("/vot", Vot );
+
   app.use(app.router);
 
-  
   app.get("/", function(req, res) {
     middleware(req,res)
   });
