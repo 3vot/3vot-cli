@@ -20,14 +20,13 @@ function execute(req, res, next) {
 	var data = req.query || {}
 	data = extend(data, req.body)
 
-	console.log(data)
-
 	function callback(error, response){
 		if(error) return res.send(error, 500);
+		res.header("Content-Type", "application/json");
 		res.send(response);
 	}
 	
-	Vot(data, callback);
+	Vot(data, callback, req);
 }
 
 module.exports = execute;

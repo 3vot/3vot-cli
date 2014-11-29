@@ -26,8 +26,14 @@ var Log = require("3vot-cloud/utils/log")
 
 var open = require("open");
 
+var gaze = require("gaze");
+
 var User;
 var port = 3000;
+
+
+var lr = require('tiny-lr')();
+lr.listen(35729);
 
 module.exports = Server;
 
@@ -54,15 +60,46 @@ Server.startServer = function(){
 
   app.use(app.router);
 
-  app.get("/", function(req, res) {
-    middleware(req,res)
+  app.get("/*.js", function(req, res) {
+
+    middleware(req,res,function(options){
+      var file = req.params[0] + ".js";
+      var filePath = Path.join(  process.cwd(), options.package.threevot.distFolder, file );
+
+      console.log(file)
+
+
+      fs.stat(filePath, function(err,stats){
+        if(err){ Log.debug(err,"server",73); return res.send(404); }
+        if(!stats.isFile()) return res.send(404);
+        var fileBody = Transform.readByType(filePath, "local", {} )
+        res.set('Content-Type', mime.lookup(filePath));
+        res.send(fileBody);
+      });
+    });
   });
+
+  app.get("/", function(req, res) {
+    var options = Packs.package({},false);
+    var file = req.params[0];
+    var filePath = Path.join(  process.cwd(), "index.html" );
+
+    fs.stat(filePath, function(err,stats){
+
+      if(err) return res.send(404);
+      if(!stats.isFile()) return res.send(404);
+      var fileBody = Transform.readByType(filePath, "index", {port: port} )
+      res.set('Content-Type', mime.lookup(filePath));
+      res.send(fileBody);
+    });
+  });
+
 
   app.get("/*", function(req, res) {
     var options = Packs.package({},false);
     var file = req.params[0];
 
-    var filePath = Path.join(  process.cwd(), options.threevot.distFolder, file );
+    var filePath = Path.join(  process.cwd(), file );
 
     fs.stat(filePath, function(err,stats){
 
@@ -88,7 +125,7 @@ function middleware(req, res) {
   .then( function(result){ options=result; return buildApp(result); } )
   .then( postHook )
   .then(function(){
-    var filePath = Path.join(  process.cwd(), options.package.threevot.distFolder, "index.html" );
+    var filePath = Path.join(  process.cwd(), options.package.threevot.distFolder, req.params[0] + ".js");
     var fileBody = Transform.readByType(filePath, "local", {port: port});
     res.set('Content-Type', mime.lookup(filePath));
     return res.send(fileBody);
@@ -179,4 +216,28 @@ function postHook(){
 
     return deferred.promise;
 }
+
+function notifyLivereload(file){
+  Log.debug("File Changed, live reload " + file, "server",221)
+
+  lr.changed({
+    body: {
+      files: [file]
+    }
+  });
+}
+
+// Also accepts an array of patterns
+gaze(['**/*.css','**/*.js', '!node_modules/**/*.*', '!dist', '!dist/**' ,'!dist/*.*', '!dist/**/*.*' ], function(err, watcher) {
+  // Add more patterns later to be watched
+  
+  this.watched(function(err, watched) {
+    //Log.debug("Watched Files " + watched , "server",235)
+  });
+
+
+  this.on('changed', function(filepath) {
+    notifyLivereload(filepath)
+  });
+});
 
