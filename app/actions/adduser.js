@@ -29,20 +29,27 @@ function execute(options){
 function getProfile(){
   var deferred = Q.defer();
   
-  callbacks = {
-    done: function(profile){
-      if(!profile.user_name) return deferred.reject("No User found with provided Key")
-      Log.user_name = profile.user_name
-      promptOptions.promptValues.user_name = profile.user_name;
-      tempVars.profile = profile
-      return deferred.resolve(profile);
-    },
-    fail: function(err){
-      return deferred.reject(err);
+  callbacks= function(res){
+    if (res.ok && responseOk(res.body) ) {
+      res.body = JSON.parse(res.body)
+      if(!res.body.Name) return deferred.reject("No User found with provided Key")
+      Log.user_name = res.body.Name
+      promptOptions.promptValues.user_name = res.body.Name;
+      tempVars.profile = res.body;
+      return deferred.resolve( tempVars.profile ) ;
+    } else {
+      Log.debug(res.text, "addUser", 45);
+      Log.warning("It seems the access code you provided is not correct.")
+      return deferred.reject( res.error || res.body )
     }
   }
-  Profile.callView( "authenticate", { public_dev_key: promptOptions.promptValues.public_dev_key }, callbacks )
-  
+
+  Request.get("https://clay.secure.force.com/api/services/apexrest/clay-api")
+  .set('Accept', 'application/json')
+  .type("application/json")
+  .query("dev_code=" + promptOptions.promptValues.public_dev_key)
+  .end(callbacks);
+
   return deferred.promise;
 }
 
