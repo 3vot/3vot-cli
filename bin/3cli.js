@@ -54,13 +54,7 @@ else if( argv.h ){
     "",
     "Commands:",
     "",
-    "  register               Registers to user 3VOT CLI",
-    "",
-    "  users                  List all users, use --add , --remove , --reset",
-    "",
-    "  setup                  Set ups 3VOT in the current folder",
-    "",
-    "  download               Downloads a starting point App",
+    
     "",
     "  server                 Starts a development server",
     "",
@@ -68,9 +62,7 @@ else if( argv.h ){
     "",
     "  build                  Builds the development version of the app (used in manual operations)",
     "",
-    "  run                    Runs a predefined process for the current app, prompts to select from a list",
-    "",
-
+    
     
     "Utilities:",
     "",
@@ -88,30 +80,18 @@ else if( argv.h ){
 }
 else{
 
-  
-  if( argv._.indexOf("setup") > -1 ){ Profile.setup(); } 
 
-  else if( argv._.indexOf("users") > -1 && argv.reset ){ require("./postInstall") }  
-
-  else if( argv._.indexOf("users") > -1  && argv.add ){ Profile.addUser(); }  
+  if( argv._.indexOf("users") > -1  && argv.add ){ Profile.addUser(); }  
 
   else if( argv._.indexOf("users") > -1  && argv.remove ){ Profile.removeUser(); }  
 
   else if( argv._.indexOf("users") > -1 ){ Profile.listUser(); }  
-
-  else if( argv._.indexOf("register") > -1 ){ Profile.register(); }
-
-  else if( argv._.indexOf("download") > -1 ){ App.download( argv.app ); }
-
-  else if( argv._.indexOf("create") > -1 ){ App.create("blank"); }
-
+  
   else if( argv._.indexOf("upload") > -1 ){ App.upload( argv.ignoreSource ); }
 
   else if( argv._.indexOf("publish") > -1 ){ App.publish( argv.ignoreSource ); }
 
   else if( argv._.indexOf("build") > -1 ){ App.build( argv.p ); }
-
-  else if( argv._.indexOf("run") > -1 ){ DevOps.run(); }
 
   else if( argv._.indexOf("server") > -1 ){ Server.prompt( argv.port ); }
 

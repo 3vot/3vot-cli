@@ -1,6 +1,6 @@
 {
   "name": "3vot-cli",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "3VOT Command Line Interface to run development task from the command line.",
   "main": "bin/3cli.js",
   "bin": {
@@ -30,7 +30,7 @@
     "3vot-model": "0.0.20",
     "mkpath": "~0.1.0",
     "async": "^0.8.0",
-    "3vot-cloud": "0.0.69",
+    "3vot-cloud": "0.0.71",
     "3vot": "~0.1.4",
     "cheerio": "~0.17.0",
     "open": "0.0.5",
